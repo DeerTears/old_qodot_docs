@@ -1,36 +1,12 @@
-# What I do
+# Temporary Qodot Docs hosting grounds
 
-|stuff|and|
-|--|--|
-|many|things|
+[Link to first page of the Temporary Qodot Docs](pages/intro/00-intro.md)
+[Link to first page of the Temporary Qodot Docs 1](../pages/intro/00-intro.md)
+[Link to first page of the Temporary Qodot Docs 2](./pages/intro/00-intro.md)
 
-I've NEVER made a website before
-
-You can use the [editor on GitHub](https://github.com/DeerTears/deertears.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+---
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
