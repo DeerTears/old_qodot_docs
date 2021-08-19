@@ -1,3 +1,5 @@
+# Installation
+
 Create a new Godot project.
 
 ![](images/01-empty-project.png)

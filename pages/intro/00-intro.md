@@ -1,4 +1,6 @@
-## Work in Progress Notice
+# Intro
+
+## Notice
 
 This guide is a work in progress and needs testing. Please submit fixes to anything as a PRs, or ping Ember on the Qodot discord if you notice something is incorrect. I'm happy to see wording or smaller details improved and made more explicit.
 

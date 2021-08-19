@@ -1,3 +1,5 @@
+# Building a Map
+
 Assuming you want to get right to building geometry, here’s how:
 
 1. Add a .map file to your project.
