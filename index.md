@@ -641,3 +641,7 @@ This guide is meant to extensively cover steps to do what most users need to mak
 - Worldspawn Layers
 - Emitting signals from point entities (creating a point_hurt that calls take_damage())
 - How to find entities that are emitting signals so you can connect them appropriately
+
+## Best Practices
+
+Can be found as a subpage of this website, [here.](pages/best-practices.md)
