@@ -95,30 +95,34 @@ This section covers where to get textures, and a little bit on how to make your 
 
 ### Creating Textures
 
-AmbientCG’s PBR creation process documented in-full: https://pbr.one/
+AmbientCG’s PBR creation process documented in-full: https://pbr.one/](https://pbr.one/)
 
-Creating Quake-like textures with Asesprite: https://youtu.be/S6Eu8Cti9nI
+Creating Quake-like textures with Asesprite:
+
+[![Making Quake Textures in Asesprite](https://res.cloudinary.com/marcomontalbano/image/upload/v1631673958/video_to_markdown/images/youtube--S6Eu8Cti9nI-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://youtu.be/S6Eu8Cti9nI "Making Quake Textures in Asesprite")
 
 ### Level Design
 
 Layout theory: https://www.youtube.com/watch?v=G4tWWiuaF7g
 
-Designing multiple difficulties: https://youtu.be/s9bleQCTdTo
+Designing multiple difficulties:
 
-Following a Style: http://web.archive.org/web/20111121052306/https://archive.gamespy.com/articles/december03/doom/romero/
+[![Designing Multiple Difficulties](https://res.cloudinary.com/marcomontalbano/image/upload/v1631674014/video_to_markdown/images/youtube--s9bleQCTdTo-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://youtu.be/s9bleQCTdTo "Designing Multiple Difficulties")
 
-https://youtu.be/ptHurafdCoQ
+Following a Style: [Archived gamespy text interview with John Romero](http://web.archive.org/web/20111121052306/https://archive.gamespy.com/articles/december03/doom/romero/)
+
+[Video highlighting John Romero's Level Design Rules](https://youtu.be/ptHurafdCoQ)
 
 John Romero’s Level Design Rules:
 
-1. Always change floor height when changing floor textures. (0:28)
-2. Use border textures between different wall segments and doorways. (1:05)
-3. Be strict about texture alignment. (1:47)
-4. Use contrast between light and dark areas and cramped and open areas. (2:25)
-5. Make sure that if the player can see outside, he can somehow get there. (3:13)
-6. Be strict about having several secret areas on each level. (3:53)
-7. Make levels flow so that the player revisits areas to better understand the 3D space. (4:44)
-8. Create several easily-recognizable landmarks for easier navigation. (5:49)
+1. Always change floor height when changing floor textures.
+2. Use border textures between different wall segments and doorways.
+3. Be strict about texture alignment.
+4. Use contrast between light and dark areas and cramped and open areas.
+5. Make sure that if the player can see outside, he can somehow get there.
+6. Be strict about having several secret areas on each level.
+7. Make levels flow so that the player revisits areas to better understand the 3D space.
+8. Create several easily-recognizable landmarks for easier navigation.
 
 ## Character Controllers
 
@@ -126,14 +130,14 @@ John Romero’s Level Design Rules:
 
 | Version | Author | Node Type | Link |
 | ------- | ------ | --------- | ---- |
-| Godot 3 | fossegutten | KinematicBody | https://github.com/fossegutten/Simple-Q3-Controller |
-| Godot 3 | GarbajYT | KinematicBody | https://github.com/GarbajYT/godot_updated_fps_controller |
-| Godot 3 | Miziziziz | KinematicBody | ["Natural Sale" link to Miziziziz's course](https://www.udemy.com/course/how-to-make-a-retro-style-3d-fps-in-the-godot-game-engine/) |
+| Godot 3 | fossegutten | KinematicBody | [fossegutten's Simple Q3 Controller on Github](https://github.com/fossegutten/Simple-Q3-Controller) |
+| Godot 3 | GarbajYT | KinematicBody | [GarbajYT's Godot Updated FPS Controller on Github](https://github.com/GarbajYT/godot_updated_fps_controller) |
+| Godot 3 | Miziziziz | KinematicBody | [Miziziz's Retro FPS Course on Udemy](https://www.udemy.com/course/how-to-make-a-retro-style-3d-fps-in-the-godot-game-engine/) |
 
 ### Character Controller Resources
 
 | Name | Link |
 | ---- | ---- |
-| Shifty's Manifesto | https://markdownpastebin.com/?id=d9d61e67f9d64db2bd215f165b931449 |
-| nvidia gameworks docs on stair-stepping | https://docs.nvidia.com/gameworks/content/gameworkslibrary/physx/guide/Manual/CharacterControllers.html |
+| Shifty's Manifesto | [https://markdownpastebin.com/?id=d9d61e67f9d64db2bd215f165b931449](https://markdownpastebin.com/?id=d9d61e67f9d64db2bd215f165b931449) |
+| nvidia gameworks docs on stair-stepping | [https://docs.nvidia.com/gameworks/content/gameworkslibrary/physx/guide/Manual/CharacterControllers.html](https://docs.nvidia.com/gameworks/content/gameworkslibrary/physx/guide/Manual/CharacterControllers.html) |
 
