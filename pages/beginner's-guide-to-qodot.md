@@ -1,4 +1,13 @@
+---
+layout: default
+title: Beginner's Guide to Qodot
+nav_order: 2
+---
+
 # Beginner's Guide to Qodot
+
+1. TOC
+{:toc}
 
 ## Building a Map
 This is the fastest way to get untextured and unscripted .map geometry and collisions from Trenchbroom into your Godot project.
