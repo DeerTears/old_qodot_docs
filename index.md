@@ -1,3 +1,14 @@
+---
+layout: default
+title: Qodot Docs
+nav_exclude: true
+---
+
+# Qodot Documentation
+
+1. TOC
+{:toc}
+
 Qodot is a powerful and complex tool for level design. When configured well, you can use Trenchbroom to place entities, brushes, and textures, and let Qodot transform that map data into Godot scenes, scripts, and materials. It’s super configurable, so you can turn something like this:
 
 ![](images/intro-trench.png)
@@ -10,7 +21,7 @@ If you are new to Qodot, you don't have to use all of its features to make good 
 
 The assumption is that you just wanna get started now, and you'll learn etiquette and efficiency as you go along. In the future, a "Best Practices" guide will be included in here as well. With that in mind, let’s make some cool stuff using old technology in a modern game engine.
 
-## How to read this guide
+# How to read this guide
 _Anything In Italics_ is an editor property you can change in the Inspector.
 
 Examples:

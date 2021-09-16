@@ -1,4 +1,13 @@
+---
+layout: default
+title: Resources
+nav_order: 4
+---
+
 # Resources
+
+1. TOC
+{:toc}
 
 Unlike [Beginner's Guide to Qodot](https://coda.io/d/Trenchbroom-Guide_d77T7fADkTg/Beginners-Guide-to-Qodot_suWQh#_luOXt), this is not a step-by-step series on how to use Trenchbroom. There are already an amazing handful of resources on how to use the program.
 
