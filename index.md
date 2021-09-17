@@ -4,22 +4,19 @@ title: Qodot Docs
 nav_exclude: true
 ---
 
-# Qodot Documentation
+Welcome! This is the documentation for Qodot, a Quake-to-Godot plugin initially developed by Shifty.
 
-1. TOC
-{:toc}
-
-Qodot is a powerful and complex tool for level design. When configured well, you can use Trenchbroom to place entities, brushes, and textures, and let Qodot transform that map data into Godot scenes, scripts, and materials. It’s super configurable, so you can turn something like this:
+Qodot is a powerful and complex tool to convert Trenchbroom and other Quake tools into Godot geometry, collisions, and scenes. When configured well, you can do all of your game's level design in Trenchbroom, and only move back to Godot to add entity definitions for doors, enemies, pickups, spawn locations, and more. You can turn a Trenchbroom map like this:
 
 ![](images/intro-trench.png)
 
-Into this:
+Into a Godot scene like this:
 
 ![](images/intro-qodot.png)
 
-If you are new to Qodot, you don't have to use all of its features to make good use of it.
+If you are new to Qodot, you don't have to use all of its features to make good use of it. The [Beginner's Guide to Godot](/pages/beginner's-guide-to-godot.html) page has everything you need to get started with the plugin on a basic level.
 
-The assumption is that you just wanna get started now, and you'll learn etiquette and efficiency as you go along. In the future, a "Best Practices" guide will be included in here as well. With that in mind, let’s make some cool stuff using old technology in a modern game engine.
+If you have experience and want to transform Trenchbroom into a full level-design suite for Godot, the [Best Practices](/pages/best-practices.html) page gives insight and breakdowns on Qodot's many configurable systems.
 
 # How to read this guide
 _Anything In Italics_ is an editor property you can change in the Inspector.

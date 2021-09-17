@@ -4,13 +4,11 @@ title: Beginner's Guide to Qodot
 nav_order: 2
 ---
 
-# Beginner's Guide to Qodot
-
 1. TOC
 {:toc}
 
 # Building a Map
-This is the fastest way to get untextured and unscripted .map geometry and collisions from Trenchbroom into your Godot project.
+Assuming your map is original, and has no textures or entities, this is the fastest way to get maps into Godot.
 
 1.  Add a .map file to your project.
 
@@ -28,9 +26,26 @@ Your map is now in Godot!
 
 ![](../images/install-final.png)
 
-If you don’t see QodotMap in your nodes list, make sure you have enabled Qodot in the Project → Project Settings → Plugin window. If nothing happens, restart Godot and try again.
+**Note:** If you don’t see QodotMap in your nodes list, make sure you have enabled Qodot in the Project → Project Settings → Plugin window.
 
-If you want Trenchbroom to read textures from your project folder, so they're displayed in Godot when you build a map, you'll need to connect your Godot project to Trenchbroom with a .cfg.
+If you want to display textures on your map geometry, you'll need to connect your Godot project to Trenchbroom with a .cfg, as shown in the [Connecting your project to Trenchbroom](#connecting-your-project-to-trenchbroom) section.
+
+## Porting a map
+
+While this guide isn't specialized to porting, most of this guide can still be followed for porting.
+
+Porting maps from unknown sources depends on three main factors:
+- There is a game definition for Trenchbroom that supports this specific map type
+	- Ask the Trenchbroom community, search around forums, or generate your own
+- Trenchbroom can display the map's textures, and you can copy those textures to your Godot project
+	- Qodot supports .wad files and loose image textures in .jpg/.jpeg or .png
+- You have the FGD that defines the entities displayed in the map
+
+Instead of generating your own FGD as this guide will show later, you can move the FGD into your Godot project and continue otherwise.
+
+If you notice Qodot won't build geometry (it appears as a wireframe) it means there are undefined entities in your map. Make sure to add the original game's FGD into the Entity FGD List of your QodotMap node, or delete any `undefined` entities from the map file in Trenchbroom.
+
+Information on [using .wad files](https://github.com/Shfty/qodot-plugin/wiki/3.-Textures-and-Materials#wad-file-support) is available on the old Qodot Wiki.
 
 # Connecting your project to Trenchbroom
 There are two main steps to connecting your project to Trenchbroom:
@@ -43,7 +58,7 @@ There are two main steps to connecting your project to Trenchbroom:
 With this in mind, we'll be creating our own FGD for our game, rather than extending the Qodot.fgd provided by the plugin.
 
 ## Making a game configuration file
-A game configuration (stored as a .cfg file) tells Trenchbroom the name and icon for your game, how your maps are saved, where your `/textures` folder is, and where the entity definitions are kept.
+A Trenchbroom game configuration (stored as a .cfg file) tells Trenchbroom the name and icon for your game, how your maps are saved, where your `/textures` folder is, and where the entity definitions are kept.
 
 When you install Qodot, you get a resource tool to create your own .cfg file.
 
@@ -101,12 +116,21 @@ Click "+" at the bottom-right to enable it, moving it to the "enabled" collectio
 
 ![](../images/textures-enabled.png)
 
-# Working with Materials
-Although it's handy to do **Basic Texturing** on a brush using the texture collections shown from before, there are many more options available to you when Qodot reads those Trenchbroom textures.
+# Putting textures on your map
 
-You can use either of Qodot’s two material-building processes to paint your level in shaders and PBR SpatialMaterials. They are:
+There are two ways Trenchbroom lets you texture a map:
+- Loose images
+- .wad files
+
+Information on [using .wad files](https://github.com/Shfty/qodot-plugin/wiki/3.-Textures-and-Materials#wad-file-support) is available on the old Qodot Wiki.
+
+The rest of this guide covers loose images.
+
+You can use either of Qodot’s two material-building processes to paint your level in ShaderMaterials and SpatialMaterials. They are:
 -   Material Override
 -   Automatic PBR Texturing
+
+Material Override is the only option for users looking to use a ShaderMaterial.
 
 ## Material Override
 When you name a texture panel.png, Qodot interprets it as a new material called panel. In Basic Texturing, you’re creating a SpatialMaterial with the Albedo set to panel.png.
@@ -188,6 +212,15 @@ Adding entities is a multi-step process, but it’s an essential way to tie Godo
 - placing Godot scenes using Trenchbroom
 - attaching Godot scripts to specific brushes as Solid Classes
 - adjusting script variables of a Godot scene using Trenchbroom's property editor
+
+You are given some entity definitions through `Qodot.fgd`, such as
+- Light
+- Breakable
+- Door
+
+These have limited functionality, but they exist as an example of what can be done with entities.
+
+**Warning:** As of Qodot 1.7, if your map has an entity that isn't in an FGD associated with the Trenchbroom game definition, the map geometry won't build in Qodot. This can happen if you copy a map but don't include an FGD to recall its entity definitions. Any brushes or points with an `undefined` classname will cause this problem. You can resolve this by removing any `undefined` entities, or re-importing the map to Trenchbroom with the proper FGDs in place for the game definition.
 
 ## Creating new entity definitions
 In Qodot, you define new types of entities by creating a resource file, with the .tres extension. Qodot provides a couple of resource presets for you to use:
