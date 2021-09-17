@@ -38,11 +38,7 @@ There are two main steps to connecting your project to Trenchbroom:
 2.  Adding your Godot project directory to Trenchbroom's game path
 3.  Enabling texture collections to place your project's textures on brushes
 
-**Warning!**
-
-As we will be creating new files, **never add new files to the `/addons/qodot` folder**. Anything you add here will be erased if you update Qodot through AssetLib, or temporarily remove the plugin to save on project space.
-
-You are free to use or remove files in `/addons/qodot` as we'll be seeing soon. Keep any new files to your own project structure.
+**Warning:** Never add new files to the `/addons/qodot` folder. Anything you add here will be erased since Qodot can auto-update through AssetLib. You are free to use or remove files in `/addons/qodot` as we'll be seeing soon. Keep any new files to your own project structure.
 
 With this in mind, we'll be creating our own FGD for our game, rather than extending the Qodot.fgd provided by the plugin.
 
@@ -52,6 +48,8 @@ A game configuration (stored as a .cfg file) tells Trenchbroom the name and icon
 When you install Qodot, you get a resource tool to create your own .cfg file.
 
 Look for the `Qodot_Trenchbroom_Config_Folder.tres` file in your addons folder. It is installed at  `res://addons/qodot/game_definitions/trenchbroom/`. You can ignore `Qodot_Trenchbroom_Config_File.tres`, it's the Folder variant we want.
+
+**Note:** Your project needs an `icon.png` file, or else Qodot won't be able to generate a Trenchbroom game definition. Godot will complain on this step until you re-add `res://icon.png` and restart Godot.
 
 Open the resource by double clicking on it in the Filesystem dock. This will give you a list of tools to edit the .cfg inside of your Inspector.
 

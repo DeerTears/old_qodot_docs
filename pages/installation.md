@@ -31,7 +31,10 @@ Once you click “Qodot” and click download, wait for it to finish downloading
 
 A tree of items to be installed will show up. Click "Install" at the bottom of the window.
 
-**Note:** Godot 3.x can hang during the import process, but this is not a crash. It will finish importing if you wait long enough. If this is taking too long, and you're not interested in seeing the example scenes, delete the `/addons/qodot/` folder, install the plugin again, and uncheck the `/addons/qodot/textures` folder to prevent this import hang.
+**Note:** Godot 3.x can hang during the import process, but this is not a crash. It will finish importing if you wait long enough. You can speed this up by:
+- Deleting `/addons/qodot/textures` if you don't plan on copying the example textures to your own `/textures` folder
+- Force-closing and force-reopening Godot until each image import is complete
+- Temporarily remove `/addons/qodot` and disable the Import Etc2 property in your Project Settings, then move `/addons/qodot` back in and re-enable in Project Settings -> Plugins.
 
 ![](../images/install-no-examples.png)
 
