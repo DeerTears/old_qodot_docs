@@ -1,4 +1,13 @@
-# Best Practices
+---
+layout: default
+title: Best Practices
+nav_order: 5
+---
+
+1. TOC
+{:toc}
+
+# Introduction
 
 This document covers several topics including how to:
 - Organize your project folders
@@ -7,6 +16,8 @@ This document covers several topics including how to:
 - Avoid development disasters and pitfalls when using Qodot
 
 These are all subject to change over time as we all get more experience using Qodot.
+
+# Tips
 
 ## Don't add to Addons
 Don’t add files to the `/addons` folder yourself. Your original work can be erased if Godot auto-updates Qodot, or if you ignore the `/addons` folder in a Git repository to save on space.
@@ -48,6 +59,7 @@ res://
 Again, this is only one example on the principle of organizing by context, not by file extension. This is all completely optional compared to what's described in the beginner's guide.
 
 ## Examples of folder structures for materials
+
 ### Basic Texturing
 Here’s an example of a folder structure for basic texturing.
 ```
@@ -59,30 +71,35 @@ Here’s an example of a folder structure for basic texturing.
 `/foliage` can be replaced by any group name you’d like. The vines* and grass* textures can be replaced by any name appropriate for the texture you're adding.
 
 Only .png files or ,jpg files are valid. You can’t use both file extensions at the same time per map. You can configure this on a QodotMap node's properties.
+
 ### Material Override
 Either .material files, or .tres files containing a SpatialMaterial or ShaderMaterial, but not both file extensions at the same time.
 ```
-- /textures
- - /jungle
- - vines.png
- - vines.material
- - zebra.png
- - zebra.material
+/textures
+	/jungle
+		vines.png
+		vines.material
+		zebra.png
+		zebra.material
 ```
+
 ### Automatic PBR Texturing
 This format is required for any material using PBR texturing.
 ```
-- /textures
- - /foliage
- - /vines
- - vines_normal.png
- - vines_displacement.png
- - vines_roughness.png
- - vines.png
- - vines.material
+/textures
+	/foliage
+		/vines
+			vines_normal.png
+			vines_displacement.png
+			vines_roughness.png
+		vines.png
 ```
+<!--		vines.material
+I don't believe this is needed-->
+
 In the example above, the only names that can change is the group name, `/foliage`, and the material name referenced anywhere in the above structure: vines.
 You can put `/foliage` into more sub-folders if you need, so long as its contents remain the same as far as structure is concerned.
+
 ## Storing .map files
 Map files on their own are not playable scenes in Godot. They need to be built using a QodotMap node, and then saved as a .tscn scene file.
 When you keep the .map file with your Godot project, it becomes worlds easier to transport your project, and use version control like Git. You just need to repeat the Trenchbroom Game Definition and Game Path process if you’re starting on a fresh machine.
@@ -106,25 +123,18 @@ Here is an example of a folder structure for creating a Quake-like game with Qod
 You might also want to combine several QodotMap nodes with several .map files into a single .tscn. In this case, a structure like this might be a better choice:
 ```
 /levels
- - /chapter1
- - /mapsource
- - jungle1a.map
- - jungle1b.map
- - jungle2a.map
- - jungle2b.map
- - jungle2c.map
- - /scenes
- - jungle1.tscn
- - jungle2.tscn
+	/chapter1
+		/mapsource
+			jungle1a.map
+			jungle1b.map
+			jungle2a.map
+			jungle2b.map
+			jungle2c.map
+		/scenes
+			jungle1.tscn
+			jungle2.tscn
 ```
-## Entities
-```
-- /meta/fgd/
- - /base_classes
- - /point_classes
- - /solid_classes
- - your_game_name_fgd.tres
-```
+
 ## Good Graphics
 One of the main benefits to using Qodot is that you can apply level design theory from the quake-era of games while using Godot’s many graphical features to make the game stand out visually.
 
@@ -137,22 +147,22 @@ Godot 3.x comes with several lighting options:
 
 ### Comparison of Lighting Methods
 
-Benefit | Dynamic Lighting | BakedLightmap | GIProbe
-------- | ---------------- |-------------- | --------
-Optimized for low-end GPUs | y | y | n
-Increases project filesize | n | y | n
-Updates in realtime | y | n | y
-Uses indirect light | n | y | y
-Adds to project filesize | n | y | y
-Photorealistic quality | n | y | y
+| Benefit | Dynamic Lighting | BakedLightmap | GIProbe |
+| ------- | ---------------- |-------------- | ------- |
+| Optimized for low-end GPUs | y | y | n |
+| Increases project filesize | n | y | n |
+| Updates in realtime | y | n | y |
+| Uses indirect light | n | y | y |
+| Adds to project filesize | n | y | y |
+| Photorealistic quality | n | y | y |
 
-#### Dynamic Lighting
-Using OmniLight, DirectionalLight, and SpotLight should be your first steps in lighting your level.
+### Dynamic Lighting
 
 While there’s a limit to 8 dynamic lights per surface, you can switch their bake mode to “all” so they’re only contributing to static lighting in a BakedLightmap.
 
 Because of the 8 dynamic light limit, you’ll have to split these lights apart in some way, or add a BakedLightmap node to render these lights as static.
-#### GIProbe
+
+### GIProbe
 GIProbe provides scenes with realtime, indirect light bounces. Using the surrounding area of a GIProbe node, it can determine how nearby objects should bleed light onto eachother. If you have a big red ball in the middle of a white room, the red of the ball will indirectly appear on the white walls.
 
 The method used in Godot 3.x’s GIProbe is _Monte Carlo Based Global Illumination_.
@@ -160,25 +170,29 @@ GDQuest’s video tutorial on using GIProbe is really handy if you’re looking 
 https://www.youtube.com/watch?v=lPngD4uzWVc
 
 In Godot 4, _Signed Distance Field Global Illumination_ is coming as another global illumination option on top of the current Monte Carlo method.
-#### BakedLightmap
+
+### BakedLightmap
 If you’re used to mapping for Quake, GoldSrc, Source, or Source 2, BakedLightmap is your light.exe / vrad.exe equivalent.
 
 Make sure you have UV2 unwrapped in the QodotMap settings, Qodot can provide this UV2 unwrap for you.
 
 Use multiple BakedLightmap nodes to split your map up into sections to allow for modular edits to your lighting.
-### Reflections
+
+## Reflections
 There are two main methods you can achieve reflections in Godot 3.x:
 -   Screen space reflections
 -   ReflectionProbes
-### Comparison of Reflection Methods
-Benefit | ReflectionProbe | SS Reflections
-------- | --------------- | --------------
-Optimized for low-end GPUs | y | n
-High quality | y | n
-Increases project filesize | y | n
-Updates in realtime | n | y
-Uses indirect light | y | n
-Adds to project filesize | y | n
+
+## Comparison of Reflection Methods
+| Benefit | ReflectionProbe | SS Reflections |
+| ------- | --------------- | -------------- |
+| Optimized for low-end GPUs | y | n |
+| High quality | y | n |
+| Increases project filesize | y | n |
+| Updates in realtime | n | y |
+| Uses indirect light | y | n |
+| Adds to project filesize | y | n |
+
 ### ReflectionProbe
 Reflection probes provide pre-calculated reflections of an area to appear on shiny surfaces. For indoor scenes especially, this is significantly more accurate than letting the sky colour/texture determine the reflections shown on a shiny object.
 
@@ -188,5 +202,6 @@ Reflection probes are not volumetric, they work best in square rooms. You can fa
 
 Reflections are planned to improve greatly in Godot 4.0, where a much faster, approximate, and smoother-looking screenspace reflection method replaces the old screenspace reflections. You can read more about it in the official Godot Engine news post here:
 https://godotengine.org/article/vulkan-progress-report-7
+
 ### 🚧 Screen Space Reflections
 Todo.

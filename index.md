@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Qodot Docs
+title: Introduction
 <!--nav_exclude: true-->
 nav_order: 1
 ---
@@ -36,7 +36,3 @@ Examples:
 -   Project → Project Settings → Plugins
 
 If you see a “🚧” emoji means I’m still doing research to work out the details. You are free to contribute knowledge on the [docs Github page](https://github.com/DeerTears/DeerTears.github.io) to assist me with this section.
-
-## Glossary
-
-wip 🚧

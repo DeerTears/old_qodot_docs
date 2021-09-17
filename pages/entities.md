@@ -4,8 +4,10 @@ title: Entities
 nav_order: 4
 ---
 
-# Entities
+1. TOC
+{:toc}
 
+# Introduction
 Entities tie Godot functionality to 3D positions and specially-marked brushes in your map file.
 
 There are two main types of entities:
@@ -61,7 +63,7 @@ After you've created new entity definitions, make sure to:
 
 todo
 
-## Placing Scenes with Point Entities
+# Placing Scenes with Point Entities
 
 In this example, I’m going to make a point entity that will spawn a Godot scene, containing a tree with collision.
 

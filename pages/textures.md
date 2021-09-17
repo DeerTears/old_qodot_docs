@@ -4,6 +4,10 @@ title: Textures
 nav_order: 3
 ---
 
+1. TOC
+{:toc}
+
+# Introduction
 There are two ways Qodot reads textures from a map file:
 - Loose image files
 - .wad files
@@ -15,6 +19,7 @@ When using loose textures, you can use any of Qodot’s three material-building 
 - Material Override
 - Automatic PBR Texturing
 
+# Comparison of Texturing Methods
 Here is a table showing a quick overview of the benefits some methods have over others.
 
 Benefit | Basic Texturing | Material Override | Auto PBR Texturing
@@ -31,13 +36,13 @@ Material Override applies a .material or .tres of the same name as your texture 
 
 Automatic PBR Texturing tells Qodot to create SpatialMaterials for you when building, provided you have named all texture files to follow the Qodot PBR naming format.
 
-## Basic Texturing
+# Basic Texturing
 
 Basic texturing applies an image to the brushes in your map. You can still control if filtering and other import effects are used by double-clicking the texture and changing the settings in the Import dock.
 
 Read [Connecting your project to Trenchbroom](../Beginner's-Guide-to-Qodot#connecting-your-project-to-trenchbroom) to learn how to get textures applied to your map.
 
-## Material Override
+# Material Override
 When you name a texture panel.png, Qodot interprets it as a new material called panel. In Basic Texturing, you’re creating a SpatialMaterial with the Albedo set to panel.png.
 If you name a texture and a .material or .tres file the same name (not including the extension) you can **override** any instances of panel.png on a Trenchbroom brush with a panel.material in Godot.
 
@@ -61,7 +66,7 @@ If this didn’t work, and you followed all instructions, try changing the mater
 
 To learn even more about working with materials, read the [Qodot Wiki page on Textures and Materials.](https://github.com/Shfty/qodot-plugin/wiki/3.-Textures-and-Materials)
 
-## Automatic PBR Texturing
+# Automatic PBR Texturing
 You can use Automatic PBR Texturing to let Qodot do the hard work of assembling a SpatialMaterial for you, so long as you give it PBR maps and name them appropriately. 
 
 **This method doesn’t let you tweak the materials after without undoing your work every build**. It's intended more-or-less to mass-import PBR materials onto a map. If you want more control, use **Material Override** instead.
@@ -89,7 +94,7 @@ You can put `/foliage` into more subfolders if you need, so long as its contents
 
 To apply a PBR material in Trenchbroom, include only the folder that contains the Albedo texture, vines.png.
 
-## Default Material
+# Default Material
 For less control, but quicker setup, you can apply a default material to every single brush face in the map using the Default Material property in a QodotMap. This can be useful if you’re using Qodot to import models and you don’t want to setup textures or materials using any of the above methods.
 
 ![](../images/materials-default.png)
