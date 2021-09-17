@@ -4,15 +4,6 @@ title: Installation
 nav_order: 1
 ---
 
-Before installing Qodot, you should know how to use:
-- [Trenchbroom](https://trenchbroom.github.io/)
-- [Godot Engine](https://godotengine.org/)
-
-You can find resources to learn trenchbroom through the [Beginner's Guide to Trenchbroom](https://coda.io/d/Trenchbroom-Guide_d77T7fADkTg/Beginners-Guide-to-Trenchbroom_suqnS).
-
-GDQuest’s [Getting Started with Godot in 2021](https://www.gdquest.com/tutorial/godot/learning-paths/getting-started-in-2021/chapter/1.getting-started/) series is great to help you get started with Godot Engine.
-
-# Installing Qodot
 Create a new Godot project, or load an existing one.
 
 Go to the AssetLib tab and search for “Qodot”.

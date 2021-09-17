@@ -1,7 +1,8 @@
 ---
 layout: default
 title: Qodot Docs
-nav_exclude: true
+<!--nav_exclude: true-->
+nav_order: 1
 ---
 
 Welcome! This is the documentation for Qodot, a Quake-to-Godot plugin initially developed by Shifty.
@@ -39,5 +40,3 @@ If you see a “🚧” emoji means I’m still doing research to work out the d
 ## Glossary
 
 wip 🚧
-
-I am a Source mapper at heart, so forgive me if I talk about "Brush Entities" because although it's functionally the same, technically Qodot calls them "Solid Classes".
