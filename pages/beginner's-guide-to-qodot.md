@@ -32,30 +32,31 @@ If you want to display textures on your map geometry, you'll need to connect you
 
 ## Porting a map
 
-While this guide isn't specialized to porting, most of this guide can still be followed for porting.
+While this guide can't cover all steps for porting, it's important to check if you have the following:
+- A Trenchbroom .cfg that supports your specific game. (Quake, Daikatana)
+- A .map that doesn't crash Trenchbroom when saving or loading, using your game's .cfg.
+- Textures as .wad or image files.
+- All .fgd files used to define the map's entities.
 
-Porting maps from unknown sources depends on three main factors:
-- There is a game definition for Trenchbroom that supports this specific map type
-	- Ask the Trenchbroom community, search around forums, or generate your own
-- Trenchbroom can display the map's textures, and you can copy those textures to your Godot project
-	- Qodot supports .wad files and loose image textures in .jpg/.jpeg or .png
-- You have the FGD that defines the entities displayed in the map
+If you don't have a game config for your ported game, even after searching community forums, you can compare your map's file structure to maps for similar games to find out how to parse it in a .cfg, or generate your own Godot project .cfg file and make new geometry instead.
 
-Instead of generating your own FGD as this guide will show later, you can move the FGD into your Godot project and continue otherwise.
+If your map cannot be loaded or saved properly, you may need to try other game settings in Trenchbroom. It helps to compare the .map file structure to other .map files which load correctly in Trenchbroom.
 
-If you notice Qodot won't build geometry (it appears as a wireframe) it means there are undefined entities in your map. Make sure to add the original game's FGD into the Entity FGD List of your QodotMap node, or delete any `undefined` entities from the map file in Trenchbroom.
+If your map is missing .fgd files, you will be missing out on the map's entities. You can build the map with Qodot anyways, and any issues with missing/wireframe geometry can be solved by deleting any `undefined` entities in the .map.
 
-Information on [using .wad files](https://github.com/Shfty/qodot-plugin/wiki/3.-Textures-and-Materials#wad-file-support) is available on the old Qodot Wiki.
+If you don't have the map's textures, you can re-texture the map geometry with .png and .jpg/.jpeg files as shown in [Texturing your map](#texturing-your-map).
 
 # Connecting your project to Trenchbroom
-There are two main steps to connecting your project to Trenchbroom:
-1.  Creating a Trenchbroom Game Definition (using Qodot’s .tres tool)
-2.  Adding your Godot project directory to Trenchbroom's game path
-3.  Enabling texture collections to place your project's textures on brushes
+When working with an original project, there are three main steps to connecting your project to Trenchbroom:
+1.  Create a Trenchbroom game config (using Qodot’s `config_folder.tres` tool)
+2.  Add your Godot project directory to Trenchbroom's game path
+3.  Enable texture collections to place your project's textures on brushes
 
 **Warning:** Never add new files to the `/addons/qodot` folder. Anything you add here will be erased since Qodot can auto-update through AssetLib. You are free to use or remove files in `/addons/qodot` as we'll be seeing soon. Keep any new files to your own project structure.
 
-With this in mind, we'll be creating our own FGD for our game, rather than extending the Qodot.fgd provided by the plugin.
+With this in mind, you should create a unique Trenchbroom game config for each Godot project you create, rather than extending the Qodot.fgd provided by the plugin.
+
+If you're porting a map with an existing game config, and you're rolling your own textures into the map, you can skip ahead to [Setting your project directory in Trenchbroom](#Setting-your-project-directory-in-Trenchbroom). Otherwise, you can read about [using .wad files](https://github.com/Shfty/qodot-plugin/wiki/3.-Textures-and-Materials#wad-file-support) on the old Qodot Wiki.
 
 ## Making a game configuration file
 A Trenchbroom game configuration (stored as a .cfg file) tells Trenchbroom the name and icon for your game, how your maps are saved, where your `/textures` folder is, and where the entity definitions are kept.
@@ -64,7 +65,7 @@ When you install Qodot, you get a resource tool to create your own .cfg file.
 
 Look for the `Qodot_Trenchbroom_Config_Folder.tres` file in your addons folder. It is installed at  `res://addons/qodot/game_definitions/trenchbroom/`. You can ignore `Qodot_Trenchbroom_Config_File.tres`, it's the Folder variant we want.
 
-**Note:** Your project needs an `icon.png` file, or else Qodot won't be able to generate a Trenchbroom game definition. Godot will complain on this step until you re-add `res://icon.png` and restart Godot.
+**Note:** Your project needs an `icon.png` file, or else Qodot won't be able to generate a Trenchbroom game config. Godot will complain on this step until you re-add `res://icon.png` and restart Godot.
 
 Open the resource by double clicking on it in the Filesystem dock. This will give you a list of tools to edit the .cfg inside of your Inspector.
 
@@ -78,10 +79,10 @@ Before clicking _Export File_ make sure you have a `res://textures/tutorial/` fo
 
 ![](../images/definition-textures.png)
 
-Finally, click the _Export File_ checkbox at the top. Your Game Definition should now be in Trenchbroom! You can go and see if Trenchbroom has your game listed in the games list when creating a new map.
+Finally, click the _Export File_ checkbox at the top. Your game config should now be in Trenchbroom! You can go and see if Trenchbroom has your game listed in the games list when creating a new map.
 
 ## Setting your project directory in Trenchbroom
-Once you've got the .cfg file created, Trenchbroom still needs you to manually set the *Game Path* property in the Preferences menu. Once set, Trenchbroom will be able to read your project’s `/textures` folder.
+Once you've got a config file, Trenchbroom still needs you to manually set the *Game Path* property in its Preferences menu. Once set, Trenchbroom will be able to read your Godot project’s `/textures` folder.
 
 Launch Trenchbroom, click "New Map..." and select your game's name and icon from the Select Game list.
 
@@ -116,7 +117,7 @@ Click "+" at the bottom-right to enable it, moving it to the "enabled" collectio
 
 ![](../images/textures-enabled.png)
 
-# Putting textures on your map
+# Texturing your map
 
 There are two ways Trenchbroom lets you texture a map:
 - Loose images
@@ -208,27 +209,33 @@ Material Override applies a .material or .tres of the same name as your texture 
 Automatic PBR Texturing tells Qodot to create SpatialMaterials for you when building, provided you have named all texture files to follow the Qodot PBR naming format.
 
 # Entities
-Adding entities is a multi-step process, but it’s an essential way to tie Godot functionality with objects you place in Trenchbroom. This leads to things like:
-- placing Godot scenes using Trenchbroom
-- attaching Godot scripts to specific brushes as Solid Classes
-- adjusting script variables of a Godot scene using Trenchbroom's property editor
+
+Entities tie Godot functionality to 3D positions and specially-marked brushes in your map file.
+
+## Intro to Entities
+
+There are two main types of entities:
+- Point Classes (Point Entities)
+- Solid Classes (Brush Entities)
+
+A Point is a position in the map. Point Entities make great spawn locations for players, pickups, enemies and more. Point  are useful for instanciating Godot scenes in 3D space, but having collisions or visuals is optional.
+
+Solid Classes are brushes with a script attached. By default, they are grouped separately from the world geometry, letting you transform and manipulate each Solid Class individually. One example is using a "physics" Brush Class to let the brush interact with physics. Multiple brushes can be a part of a single Solid Class.
 
 You are given some entity definitions through `Qodot.fgd`, such as
 - Light
 - Breakable
-- Door
+- Ball
 
 These have limited functionality, but they exist as an example of what can be done with entities.
 
-**Warning:** As of Qodot 1.7, if your map has an entity that isn't in an FGD associated with the Trenchbroom game definition, the map geometry won't build in Qodot. This can happen if you copy a map but don't include an FGD to recall its entity definitions. Any brushes or points with an `undefined` classname will cause this problem. You can resolve this by removing any `undefined` entities, or re-importing the map to Trenchbroom with the proper FGDs in place for the game definition.
+## Creating new entities
 
-## Creating new entity definitions
-In Qodot, you define new types of entities by creating a resource file, with the .tres extension. Qodot provides a couple of resource presets for you to use:
+In Qodot, you define new types of entities by creating a .tres resource file, using one of Qodot's 3 resource presets:
 
-- QodotFGDFile: Your game's personal FGD, read by Trenchbroom. Contains all other entity definitions.
 - QodotFGDPointClass: Instantiates a scene at a specific location, like health pickups and enemies.
 - QodotFGDSolidClass Attaches a script to a specific brush, like an interactable door or a breakable window.
-- QodotFGDBaseClass: An empty class that just contains properties, acting a template for other subclasses. Handy when needed, but never required.
+- QodotFGDBaseClass: An empty class that just contains properties, acting a template for other classes. Handy when needed, but never required.
 
 You can access these presets by creating a new resource. You can either click the "New Resource" icon in the Inspector, or right-click the FileSystem and click "Create New Resource".
 
@@ -238,29 +245,27 @@ You can access these presets by creating a new resource. You can either click th
 
 Both will take you to the resource search screen. Here you can type in the following quick terms to narrow down the type of resource you want to create:
 
-- fgdfile
 - pointclass
 - solidclass
 - baseclass
 
-Since all of these files serve different purposes, but contain the same .tres extension, you can use the suffix `_fgd`, `_point`, `_solid`, and `_base` in filenames to make it easier to search for all of a certain type of resource.
+All of these files serve different purposes, so using the suffix `_point`, `_solid`, and `_base` in filenames makes it easier to search for them in the FileSystem dock.
 
-## Updating your game definition
+## Updating your game config
 
-Every time you create a new entity definition, you need to ensure that Trenchbrom is told a new entity definition exists.
+Every time you create a new entity definition, you need to ensure that Trenchbrom is told a new entity definition exists. You do this by re-exporting your game config.
 
-This means for every new entity definition, you also:
-- Add the entity definition to your game's FGD
-- Include the FGD in your .cfg
-- Export the new .cfg to Trenchbroom
-	- This can be done through the Config tool or when viewing your FGD in the Inspector
-- Reload Trenchbroom or press F6 to reload entity definitions
+After you've created new entity definitions, make sure to:
+- Add the new entity definitions to your game's FGD
+- Check the FGD is included in your Trenchbroom game config
+- Export the new config by clicking Export File in the Inspector
+- Go to Trenchbroom and press F6 to reload entity definitions
 
 ## 🚧 Creating new properties
 
 todo
 
-## Making a point entity
+## Making a point entity example
 In this example, I’m going to make a point entity that will spawn a Godot scene, containing a tree with collision.
 
 To make your own point entity, right click on a folder in Filesystem, and click _Create New Resource_. Search for “Qodot” and you should get a list of resources to extend.
@@ -290,6 +295,7 @@ Notice I only needed to change the Scene File and the Classname in this .tres. E
 Now we can include this entity in a new FGD file. That way, Qodot can parse all of our game’s objects, and we can load them into Trenchbroom as well.
 
 To learn more about working with props and entities, read the [Qodot Wiki page on Entities.](https://github.com/Shfty/qodot-plugin/wiki/4.-Entities)
+
 ## Making an FGD File
 Qodot comes with a default FGD file, but you shouldn’t edit it because any changes will be overwritten when you update the Qodot plugin.
 
@@ -308,9 +314,9 @@ Change the _Fgd Name_ to your game’s name. You can then open the Entity Defini
 
 It’s okay to delete the entity definitions that are included by default in an FGD because we can switch FGDs in Trenchbroom, and include multiple FGDs when building maps.
 
-Finally, we’re almost done. Now we need to update the Trenchbroom Game Definition to include our new FGD and entity definitions.
+Finally, we’re almost done. Now we need to update the Trenchbroom game config to include our new FGD and entity definitions.
 
-## Updating the Trenchbroom Game Definition
+## Updating the Trenchbroom game config
 Go back to the Config_Folder tool and add a new item to the _Fgd Files_ array. Add the FGD you made by dragging and dropping, or using the folder selection button.
 
 ![image.png](https://codahosted.io/docs/77T7fADkTg/blobs/bl-FzkbKV9nbb/04e6eb13407c60ff95322a0627a1dde76f89973d022315763f2abafcdf9630df2514565ef2d63dc21e5cfa9427e932f9eda3a067b1b132b17695f59704c268aeabe7fd8bb3d27fee23ab7cc49899ccc9ec875cf8a1a815d1623d4dbdd02795460e8ac106)
@@ -365,7 +371,7 @@ Then update the configuration for Trenchbroom using the FGD resource by clicking
 
 Now we can go back into Trenchbroom and try to create a brush entity.
 
-When loading up a map for your game definition, first check that you're using your game's FGD and not Qodot's by clicking your game's name:
+When loading up a map for your game config, first check that you're using your game's FGD and not Qodot's by clicking your game's name:
 
 ![](../images/Pasted image 20210911193415.png)
 
@@ -413,4 +419,4 @@ Example:
 
 **Warning:** Add quotes surrounding your value, or TrenchBroom may crash when placing your entity class.
 
-Now that you’ve done this, you also need to update your Game Definition every time your FGD changes. You can repeat the process for exporting a game definition from earlier to overwrite the entire folder, or see **Updating a Game Definition** in [Expert Zone](https://coda.io/d/Trenchbroom-Guide_d77T7fADkTg/Expert-Zone_suNzt) for more information on just updating the .cfg.
+Now that you’ve done this, you also need to update your game config every time your FGD changes. You can repeat the process for exporting a game config from earlier to overwrite the entire folder, or see **Updating a game config** in [Expert Zone](https://coda.io/d/Trenchbroom-Guide_d77T7fADkTg/Expert-Zone_suNzt) for more information on just updating the .cfg.

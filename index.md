@@ -34,11 +34,10 @@ Examples:
 -   Transform → Position → X
 -   Project → Project Settings → Plugins
 
-**Anything in bold** is referring to a section that desktop users can skip to in the outline on the top right.
+If you see a “🚧” emoji means I’m still doing research to work out the details. You are free to contribute knowledge on the [docs Github page](https://github.com/DeerTears/DeerTears.github.io) to assist me with this section.
 
-Examples:
--   **Readme**
--   **Prerequisites**
--   **How to read this guide**
+## Glossary
 
-If you see a “🚧” emoji means I’m still doing research to work out the details. The information might still be useful, just bear in mind it may be incomplete, untested, and misleading. You are free to contribute on the github page in all forms.
+wip 🚧
+
+I am a Source mapper at heart, so forgive me if I talk about "Brush Entities" because although it's functionally the same, technically Qodot calls them "Solid Classes".
