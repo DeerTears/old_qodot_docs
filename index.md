@@ -5,7 +5,7 @@ title: Introduction
 nav_order: 1
 ---
 
-This website is currently under heavy development. Not all information is up to date or accurate, please help me out by testing what's written. [Submit an issue for this repo's Github page](https://github.com/DeerTears/DeerTears.github.io) or ping Ember on the Qodot discord if you see anything that needs fixing.
+This website is currently under heavy development. Not all information is up to date or accurate, please help me out by testing what's written. [Submit an issue for this repo's Github page](https://github.com/DeerTears/DeerTears.github.io/issues) or ping Ember on the Qodot discord if you see anything that needs fixing.
 
 # Welcome!
 
