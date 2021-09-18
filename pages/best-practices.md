@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Best Practices
-nav_order: 5
+nav_order: 6
 ---
 
 1. TOC

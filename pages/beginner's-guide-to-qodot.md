@@ -8,13 +8,29 @@ nav_order: 2
 {:toc}
 
 # Prerequisites
-Before continuing, you should know how to use:
+Before continuing, you should roughly know how to use:
 - [Trenchbroom](https://trenchbroom.github.io/)
 - [Godot Engine](https://godotengine.org/)
 
 You can find resources to learn trenchbroom through the [Beginner's Guide to Trenchbroom](https://coda.io/d/Trenchbroom-Guide_d77T7fADkTg/Beginners-Guide-to-Trenchbroom_suqnS).
 
-GDQuest’s [Getting Started with Godot in 2021](https://www.gdquest.com/tutorial/godot/learning-paths/getting-started-in-2021/chapter/1.getting-started/) video series is great to help you get started with Godot Engine, as well as many other YouTube channels like [Garbaj](https://www.youtube.com/c/Garbaj), and text resources like [KidsCanCode](http://kidscancode.org/godot_recipes/).
+There are too many Godot learning resources to list in full, some popular ones include:
+
+YouTube channels like:
+- [GDQuest](https://www.youtube.com/c/Gdquest)
+- [Garbaj](https://www.youtube.com/c/Garbaj) 
+- [KidsCanCode](https://www.youtube.com/c/KidscancodeOrg)
+- [Miziziziz](https://www.youtube.com/watch?v=LbyyjmOji0M&list=PLmugv6_kd0qNyt0WHVnac1f5IFzG-7grN)
+
+Free text resources like:
+- [Godot Stable Docs](https://docs.godotengine.org/en/3.4/)
+- [KidsCanCode's website](http://kidscancode.org/godot_recipes/)
+
+Videos presented as a free course:
+- GDQuest: [Getting Started with Godot in 2021](https://www.gdquest.com/tutorial/godot/learning-paths/getting-started-in-2021/chapter/1.getting-started/)
+- godottutorials.com: [Beginner's Guide to Godot](https://godottutorials.com/courses/godot-basics-series/) (10h) and [Introduction to GDScript](https://godottutorials.com/courses/introduction-to-gdscript/) (5h)
+- Zenva: [Learn the Godot Game Engine in 50 Minutes](https://www.youtube.com/watch?v=QftpPI5iYrY) (51m)
+- Tutemic: [Godot 3D: Code Architecture Course](https://www.youtube.com/watch?v=yRHN_WEulLc) (7h29m)
 
 # Building a Map
 Assuming your map is original, and has no textures or entities, this is the fastest way to get maps into Godot.
@@ -39,21 +55,7 @@ Your map is now in Godot!
 
 If you want to display textures on your map geometry, you'll need to connect your Godot project to Trenchbroom with a .cfg, as shown in the [Connecting your project to Trenchbroom](#connecting-your-project-to-trenchbroom) section.
 
-## Porting a map
-
-While this guide can't cover all steps for porting, it's important to check if you have the following:  
-- A Trenchbroom .cfg that supports your specific game. (Quake, Daikatana)  
-- A .map that doesn't crash Trenchbroom when saving or loading, using your game's .cfg.  
-- Textures as .wad or image files.  
-- All .fgd files used to define the map's entities.  
-
-If you don't have a game config for your ported game, even after searching community forums, you can compare your map's file structure to maps for similar games to find out how to parse it in a .cfg, or generate your own Godot project .cfg file and make new geometry instead.
-
-If your map cannot be loaded or saved properly, you may need to try other game settings in Trenchbroom. It helps to compare the .map file structure to other .map files which load correctly in Trenchbroom.
-
-If your map is missing .fgd files, you will be missing out on the map's entities. You can build the map with Qodot anyways, and any issues with missing/wireframe geometry can be solved by deleting any `undefined` entities in the .map.
-
-If you don't have the map's textures, you can re-texture the map geometry with .png and .jpg/.jpeg files as shown in [Texturing your map](#texturing-your-map).
+If you don't have an original map, and you're trying to port a map instead, read the page on [Porting](porting.html).
 
 # Connecting your project to Trenchbroom
 When working with an original project, there are three main steps to connecting your project to Trenchbroom:
@@ -63,14 +65,13 @@ When working with an original project, there are three main steps to connecting 
 
 **Warning:** Never add new files to the `/addons/qodot` folder. Anything you add here will be erased since Qodot can auto-update through AssetLib. You are free to use or remove files in `/addons/qodot` as we'll be seeing soon. Keep any new files to your own project structure.
 
-With this in mind, you should create a unique Trenchbroom game config for each Godot project you create, rather than extending the Qodot.fgd provided by the plugin.
+If you're porting a map with an existing game config, and you're rolling your own textures into the map, you can skip ahead to [Setting Game Path in Trenchbroom](#Setting-Game-Path-in-Trenchbroom). Otherwise, you can read about [using .wad files](https://github.com/Shfty/qodot-plugin/wiki/3.-Textures-and-Materials#wad-file-support) on the old Qodot Wiki.
 
-If you're porting a map with an existing game config, and you're rolling your own textures into the map, you can skip ahead to [Setting your project directory in Trenchbroom](#Setting-your-project-directory-in-Trenchbroom). Otherwise, you can read about [using .wad files](https://github.com/Shfty/qodot-plugin/wiki/3.-Textures-and-Materials#wad-file-support) on the old Qodot Wiki.
+## Creaing a Trenchbroom game config in Qodot
 
-## Making a Trenchbroom game config
 A Trenchbroom game configuration (stored as a .cfg file) tells Trenchbroom the name and icon for your game, how your maps are saved, where your `/textures` folder is, and where the entity definitions are kept.
 
-When you install Qodot, you get a resource tool to create your own .cfg file.
+When you install Qodot, you get a resource tool to create your own .cfg file. It's here so you can create a unique .cfg for your unique Godot project.
 
 Look for the `Qodot_Trenchbroom_Config_Folder.tres` file in your addons folder. It is installed at  `res://addons/qodot/game_definitions/trenchbroom/`. You can ignore `Qodot_Trenchbroom_Config_File.tres`, it's the Folder variant we want.
 
@@ -80,9 +81,23 @@ Open the resource by double clicking on it in the Filesystem dock. This will giv
 
 ![](../images/definition-resource.png)
 
-Inside of _Trenchbroom Games Folder_, add the path to the `/games` folder inside your computer’s Trenchbroom installation. You’ll have to copy and paste your computer’s filesystem path here. An example would be `C:/Users/Ember/Documents/My Games/Trenchbroom/games/`.
+Inside of _Trenchbroom Games Folder_, add the directory path to the `/games` folder inside your Trenchbroom installation. Depending on your OS this is located in different folders:
 
-You should change the _Game Name_ to your project’s name too, to avoid clashing with other game names.
+| Platform | Location |
+| -------- | ---------|
+| Windows | The directory where the TrenchBroom executable is located, such as C:\Users\<username>\Documents\Trenchbroom\games\ |
+| macOS | TrenchBroom.app/Contents/Resources |
+| Linux | <prefix>/share/trenchbroom, where <prefix> is the installation prefix. |
+
+If you don't have write access to the folder, you can also use the UserData folder for your OS:
+
+| Platform | Location |
+| -------- | ---------|
+| Windows | C:\Users\<username>\AppData\Roaming\TrenchBroom|
+| macOS | ~/Library/Application Support/TrenchBroom |
+| Linux | ~/.TrenchBroom |
+
+Back to editing the .cfg, you should change the _Game Name_ to your project’s name to avoid overwriting other Godot project names in the future.
 
 Before clicking _Export File_ make sure you have a `res://textures/tutorial/` folder in your Godot project directory. This will help us later when we add textures to our project. You can call the folder something else, there just needs to be a subfolder under the `/textures` folder for Trenchbroom to read textures later. This isn't a best practice for large projects (more on that later) but it's easiest when getting started.
 
@@ -92,7 +107,7 @@ Finally, click the _Export File_ checkbox at the top. Your game config should no
 
 The next two steps will ensure Trenchbroom can read your project's textures, and so Qodot can correctly read those textures and apply it to geometry in Godot.
 
-## Setting Game Path in Trenchbroom Preferences
+## Setting Game Path in Trenchbroom
 Once you've got a config file, Trenchbroom still needs you to manually set the *Game Path* property in its Preferences menu. Once set, Trenchbroom will be able to read your Godot project’s `/textures` folder.
 
 Launch Trenchbroom, click "New Map..." and select your game's name and icon from the Select Game list.
@@ -128,7 +143,8 @@ Click "+" at the bottom-right to enable it, moving it to the "enabled" collectio
 
 ![](../images/textures-enabled.png)
 
-## The Next Step
+
+# The Next Step
 
 Congratulations! You've completed the Beginner's Guide to Qodot. From having completed this guide, you should be able to build maps in Qodot and unify textures between Trenchbroom and your Godot project.
 
