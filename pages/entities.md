@@ -95,7 +95,7 @@ This determines the parent entities for this class, where this entity gets all t
 
 Once exported to the cfg, the dictionary values are written by editing entities in Trenchbroom, and read by accessing `properties` on a QodotEntity once the map is built.
 
-To add new class properties to an entity:
+To add a new class property to an entity:
 
 1. Open the dictionary.
 2. Click the first pencil by "New Key: [null]" and select "String" as the key data type.
@@ -103,13 +103,13 @@ To add new class properties to an entity:
 4. Click the second pencil by "New Value: [null]" and select any valid data type.
 5. Change the value to your desired default, or leave it blank.
 6. Click "Add new key/value pair".
-7. Repeat 1-6 for every new property.
+7. Re-export your FGD once all class properties are added.
 
 You can also set default values for your properties, by repeating this process in Meta Properties, matching the key names and value datatypes from this dictionary.
 
 **Class Property Descriptions** - A dictionary of descriptions for each property, visible in Trenchbroom.
 
-Follow the same steps as adding class properties to add property descriptions. Ensure the description's key value matches the property's key value. The value can only be a String.
+Follow the same steps as adding class properties to add property descriptions. Ensure the description's key matches the property's key. Description values can only be strings.
 
 **Meta Properties** - Editor-specific properties, such as the default color and size used to represent this class.
 
@@ -121,7 +121,7 @@ This doesn't fully control the type of node that Godot spawns, read on to learn 
 
 ## Point Class properties
 
-Point Classes inherit all features from Base Classes, with a few additions. QodotMap reads their position in the map, and places a QodotMap node in their place. You have the option to replace the QodotEntity node with other node types, or even instance .tscn scenes in their place.
+Point Classes inherit all features from Base Classes, with a few additions. QodotMap reads their position in the map, and places a QodotEntity node in their place. You have the option to replace the QodotEntity node with other node types, or even instance .tscn scenes in their place.
 
 **Scene File** - The .tscn Godot scene that spawns in place of QodotEntity. The easiest way to spawn a specific node at a specific point.
 
@@ -131,27 +131,53 @@ Scene File takes priority over every other option here, especially if there's al
 
 This is ideal for spawning nodes without a .tscn file. If you want to access this entities' Class Properties, add a script here that `extends QodotMap` and accesses `properties["key_name"]`.
 
-You can extend other Spatial-derived node types too, and add necessary children (CollisionShape, MeshInstance) through code, but you lose out on the abliity to access `properties`.
+You can extend other Spatial-derived node types too, and add necessary children (CollisionShape, MeshInstance) through code, but you lose out on the ablity to access `properties`. You can fix this by always choosing to extend `QodotEntity` and adding more complex nodes like Area and RigidBody as children through code.
 
-Make sure you update Node Class to match the node this class `extends` from.
+Make sure to update Node Class so it matches the the script's `extends`!
 
 **Node Class** - The type of node to spawn at this location. This property should match the `extends` of your Script Class. You can ignore this property if you're using a Scene File.
 
-Be careful of which node you extend in Script Class. If you wanted to create Area nodes by point entity, extending `Area` in this script prevents you from accessing your Class Properties. However, extending `QodotEntity` prevents you from accessing the functions and signals of an Area.
+With those properties covered, there's a few tricks you can use to get more specific results.
 
-You can get around this by extending `QodotEntity` and using `var node = Node.new()` and `add_child(node)` to add more complex nodes as children, while still having access to the `properties` dictionary.
+If you want to create an RigidBody node without a .tscn using a point entity, extending `RigidBody` in thes script prevents you from accessing the class property values set in Trenchbroom. However, extending `QodotEntity` prevents you from accessing the functions and signals of a RigidBody.
+
+You can get around this by extending `QodotEntity` and using `var body = RigidBody.new()` and `add_child(body)` to add more complex nodes as children, while still having access to the `properties` dictionary. This can be repeated for other children like MeshInstance and CollisionShape.
 
 ## Solid Class Properties
 
-**Spawn Type** - Whether the class should act as the worldspawn, be merged with the worldspawn, or act as a free-standing entity.
+Solid classes can have multiple brushes, so these properties apply to the brush entity as a single object, not to each brush individually.
 
-**Build Visuals** - Whether visual meshes should be built.
+**Spawn Type** - Changes how the QodotMap arranges these brushes in its node hierarchy.
 
-**Physics Body Type** - As an alternative to Node Class, this determines the type of physics body node spawned during build.
+There are 4 settings:
+- Worldspawn
+- Merge Worldspawn
+- Entity
+- Group
 
-**Collision Shape Type** - The type of collision shape attached to the entity during build.
+**Build Visuals** - Makes the brush entity visible when checked.
 
-**Script Class** - A script class applied to the entity's root node during build.
+You may want to disable this for invisible triggers and other gameplay-related brush entities.
+
+**Node Class** - Sets the node type of the brush entity root.
+
+If you're adding a Script Class, this value should match the `extends` of the script.
+
+Setting this to RigidBody and setting Spawn Type to Entity changes these brushes from static geometry into physics objects.
+
+**Collision Shape Type** - Changes how collision is built.
+
+- None
+- Convex
+- Concave
+
+Convex creations a CollisionShape for each brush, depending on the Spawn Type. Entity creates an outer hull, Group creates individual shapes for each brush. Convex is a good bet for most situations.
+
+Concave allows for concave brush geometry, or if you chose Entity and want a single concave CollisionShape to make up your brush entity. 🚧
+
+**Script Class** - The script applied to the entity's root.
+
+Although `QodotFGDSolidClass` is a class you can extend from, this is meant as a Qodot internal to build solid classes. This does not extend QodotEntity, and will not give you access to `properties`.
 
 # Creating an FGD file
 
