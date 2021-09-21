@@ -14,13 +14,11 @@ There are two main types of entities:
 - Point Classes (Point Entities)
 - Solid Classes (Brush Entities)
 
-**Note:** Keep in mind that "Entities" and "Classes" mean the same thing for this entire page. Qodot calls them classes, Trenchbroom calls them entities. This has nothing to do with the concept of classes in GDscript.
-
-**Note:** This also applies for "Brush" and "Solid", Qodot calls them solid entities, Trenchbroom calls them brush entities. Godot on its own doesn't understand "brushes", rather it holds collision and geometry for groups of nodes once they're built through a QodotMap node.
-
 A Point Entity is a position in 3D space. They work well for spawn locations, pickups, enemies and more. Point Entities are useful for instanciating Godot scenes in 3D space. Having collisions, visuals, or scripts are completely optional for any given Point Entity.
 
 Brush Entities are brushes with a script attached. By default, they are grouped separately from the world geometry, letting you transform and manipulate each Solid Class individually. One example is using a "physics" Brush Class to let the brush interact with physics. Multiple brushes can be a part of a single Solid Class.
+
+**Note:** Keep in mind that "Entities" and "Classes" mean the same thing for this entire page. Qodot calls them classes, Trenchbroom calls them entities. This has nothing to do with the concept of classes in GDscript. This also applies for "Brush" and "Solid", Qodot calls them solid entities, Trenchbroom calls them brush entities. Godot on its own doesn't understand "brushes", rather it holds collision and geometry for groups of nodes once they're built through a QodotMap node.
 
 You are given some entity definitions through `Qodot.fgd`, such as
 - Light
@@ -37,19 +35,11 @@ In Qodot, you define new types of entities by creating a new .tres resource file
 - QodotFGDSolidClass
 - QodotFGDBaseClass
 
-Point Class instantiates a scene at a specific location, like health pickups and enemies.
-
-Solid Class attaches a script to a specific brush (or group of brushes), like an interactable door or a breakable window.
-
-Base Class is an empty class that just contains properties, acting a template for other classes. Handy when needed, but never required.
-
-You can access these 3 presets by creating a new resource.
-
-You can click the "New Resource" icon in the Inspector:
-![](../images/Pasted image 20210911194206.png)
+Click the "New Resource" icon in the Inspector:
+![](../images/res-inspector.png)
 
 Or right-click the FileSystem and click "Create New Resource":
-![](../images/Pasted image 20210911194226.png)
+![](../images/res-filesystem.png)
 
 Either will take you to the resource search screen. Here you can type in the following quick terms to narrow down the type of resource you want to create:
 
@@ -57,16 +47,100 @@ Either will take you to the resource search screen. Here you can type in the fol
 - solidclass
 - baseclass
 
-Each class has a different set of properties to adjust.
+Each class has a different set of properties to adjust:
+
+- Point Classes instantiate a scene at a specific location, like health pickups and enemies.
+- Solid Classes attach a script to a specific brush (or group of brushes), like an interactable door or a breakable window.
+- Base Classes are empty; they only contain properties as a template for other classes. They're handy when needed, but never required.
+
+## Valid Data Types
+
+As shown later in this page, you can define properties for entities in the Class Properties dictionary. Although Godot provides several data-type options for the values, Trenchbroom can only read 8 of them. These data types are:
+
+- Bool
+- Int
+- Float
+- String
+- Vector3
+	- Stored as a string in the form X Y Z
+- Color
+	- Stored as a string in the form R G B
+- Dictionary
+	- Used for defining a set of choice keys and their associated values
+	- Will display a dropdown in compatible editors
+- Array
+	- Used for bitmask flag properties
+	- Each entry represents a flag as a nested array in the form [name, value, default]
+	- Will display a grid of checkboxes in compatible editors
+
+What follows is a breakdown of each property in the Inspector when editing one of the three main class types.
 
 ## Base Class Properties
 
-The properties you can edit for a Base Class are shared by Point and Solid classes.
+These properties are shared by Point and Solid classes. Base Class only exists as a template for other classes, if you're looking for an ECS-like approach to sharing properties.
 
-🚧
+**Classname** - The name for this class in Trenchbroom.
+
+**Description** - A short description that displays in Trenchbroom when this entity is selected.
+
+**Qodot Internal** - Hides the entity in Trenchbroom's entity browser.
+
+Qodot can still refer to this entity for building other entities (like base entities). Base Entities are already hidden in Trenchbroom by default, for most situations you can leave this off.
+
+**Base Classes** - An array of template entities to inherit properties from.
+
+This determines the parent entities for this class, where this entity gets all the class properties, meta properties, and property descriptions from its parents.
+
+**Class Properties** - A dictionary of properties.
+
+Once exported to the cfg, the dictionary values are written by editing entities in Trenchbroom, and read by accessing `properties` on a QodotEntity once the map is built.
+
+To add new class properties to an entity:
+
+1. Open the dictionary.
+2. Click the first pencil by "New Key: [null]" and select "String" as the key data type.
+3. Name your property in the key text field, no spaces.
+4. Click the second pencil by "New Value: [null]" and select any valid data type.
+5. Change the value to your desired default, or leave it blank.
+6. Click "Add new key/value pair".
+7. Repeat 1-6 for every new property.
+
+You can also set default values for your properties, by repeating this process in Meta Properties, matching the key names and value datatypes from this dictionary.
+
+**Class Property Descriptions** - A dictionary of descriptions for each property, visible in Trenchbroom.
+
+Follow the same steps as adding class properties to add property descriptions. Ensure the description's key value matches the property's key value. The value can only be a String.
+
+**Meta Properties** - Editor-specific properties, such as the default color and size used to represent this class.
+
+Add an entry with a matching key to an existing property, set the value to the same data type, and whatever value is present will become the default. Only one meta property is read per class property.
+
+**Node Class** - The type of Godot node to spawn at this location.
+
+This doesn't fully control the type of node that Godot spawns, read on to learn more about using Node Class with Point Classes and Solid Classes.
+
 ## Point Class properties
 
-🚧
+Point Classes inherit all features from Base Classes, with a few additions. QodotMap reads their position in the map, and places a QodotMap node in their place. You have the option to replace the QodotEntity node with other node types, or even instance .tscn scenes in their place.
+
+**Scene File** - The .tscn Godot scene that spawns in place of QodotEntity. The easiest way to spawn a specific node at a specific point.
+
+Scene File takes priority over every other option here, especially if there's already a script attached to the .tscn file.
+
+**Script Class** - The script to attach to your entity's root node.
+
+This is ideal for spawning nodes without a .tscn file. If you want to access this entities' Class Properties, add a script here that `extends QodotMap` and accesses `properties["key_name"]`.
+
+You can extend other Spatial-derived node types too, and add necessary children (CollisionShape, MeshInstance) through code, but you lose out on the abliity to access `properties`.
+
+Make sure you update Node Class to match the node this class `extends` from.
+
+**Node Class** - The type of node to spawn at this location. This property should match the `extends` of your Script Class. You can ignore this property if you're using a Scene File.
+
+Be careful of which node you extend in Script Class. If you wanted to create Area nodes by point entity, extending `Area` in this script prevents you from accessing your Class Properties. However, extending `QodotEntity` prevents you from accessing the functions and signals of an Area.
+
+You can get around this by extending `QodotEntity` and using `var node = Node.new()` and `add_child(node)` to add more complex nodes as children, while still having access to the `properties` dictionary.
+
 ## Solid Class Properties
 
 🚧
@@ -140,6 +214,34 @@ Build the map, your point entity should show up!
 
 ![](https://codahosted.io/docs/77T7fADkTg/blobs/bl-Quw6e7Htp7/053b2984d5984e7d894b3e13135746c977fc0378852f87ece9241a128aea48096806d7b9ec5d75e5def8838a5cc371d20342940e4531f8a261294e71906eb1a17d76500a8407366435fe56b5af47af0dfd0e238efc3baf3a35586034851c3af78e23a5e6)
 
+# Accessing Class Properties in Code
+
+`properties`
+
+This dictionary's keys are the same as the keys you set earlier in Class Properties.
+
+You can check for these properties using `if "key_name" in properties` and access them with `properties["key_name"]`. This is how you read Trenchbroom-set properties in Godot.
+
+For example, if you have a point light entity with a "color" key and a Color value in the class properties, your code could look like this to apply the color to your light:
+
+```gdscript
+extends QodotEntity
+
+# This variable is static-typed so I get code autocomplete.
+# I want to code like it already exists, even though it's created at runtime.
+var light: OmniLight
+
+func _ready:
+	light = OmniLight.new()
+	add_child(light)
+	# Optional step: prevent errors if the property doesn't exist.
+	if "color" in properties:
+		# Assign the value read from the map file to this node's property
+		light.light_color = properties["color"]
+
+```
+
+In general, instance complex nodes in code, so you don't lose access to the properties dictionary. You can do this for .tscn files too if they have no script on the root. If there is a script on the .tscn root, you can also instance the entire .tscn file (script and all) as a child added through code, as shown above.
 
 # Updating the entity pipeline
 After every entity you create, there are 3 steps to ensure that Trenchbroom and QodotMap are aware of its existence. You can do these in a batch, or one-by-one.
@@ -148,9 +250,9 @@ After every entity you create, there are 3 steps to ensure that Trenchbroom and 
 2. Re-export your Trenchbroom game config with your updated FGD included.
 3. Add your FGD to a QodotMap's *Entity Fgd*, either directly, or as a *Base Fgd File* inside another FGD.
 
-# Step-by-step examples
+## Step-by-step examples
 
-## Placing scenes with point entities
+### Placing scenes with point entities
 
 In this example, I’m going to make a point entity that will spawn a Godot scene, containing a tree with collision.
 
@@ -182,7 +284,7 @@ Now we can include this entity in a new FGD file. That way, Qodot can parse all 
 
 To learn more about working with props and entities, read the [Qodot Wiki page on Entities.](https://github.com/Shfty/qodot-plugin/wiki/4.-Entities)
 
-## Creating a Brush Entity / Solid Class
+### Creating a Brush Entity / Solid Class
 
 Create a new Solid Entity resource by searching for "solid".
 
@@ -214,34 +316,6 @@ When loading up a map for your game config, first check that you're using your g
 
 <!-- Problem! I cannot get a brush entity to transfer over? -->
 
-# Working with Properties
-There’s more we can do to extend entities.
-## Example in Trenchbroom with the default FGD
-Working off of the Qodot default FGD, you can see that the properties for a physics_ball look like this in Trenchbroom:
-
-![](https://codahosted.io/docs/77T7fADkTg/blobs/bl-qs9WY6QFQq/99e16b6be91dafe48a1fab6c9b38e69fc701ba960b9638e4830ac3bd7c7b4f825ad351c691a7e29592daebb3e4a88441bbc6b42696c361df344a9cccc6c3d313b3a7a70264a34713f65155f8023cc4bed6f8a593be9b25297650c5e0ff38973b4f6b277d)
-
-You can double click on any of the values to edit them. I’m going to change velocity from 0 0 0 into 0 0 50.
-
-Now when we compile the map, a few things happen.
-1.  Qodot looks for all instances of the entity
-2.  Qodot checks the properties for each entity and adds it to a properties dictionary.
-(The key / value system of Trenchbroom properties works 1:1 with the key / value system of Godot’s Dictionaries.)
-3. A script associated with the entity turns properties into actual changes on the node and script it represents.
-
-Rebuilding my map, I get to watch the physics ball fly off into the distance because I set its velocity in Trenchbroom:
-
-![](https://codahosted.io/docs/77T7fADkTg/blobs/bl-E5r4Wput-J/7eb50f6ad45b2d3e587455dd134410599009b7f5376287b68e548f7a939c73929d1fe3d7292f53a594b7fa54493145e23e6227d6aa0a34015368ae9e43ff988ab905d34a48c881085702b420e6e5d78535a1f1bdd41ce1cbe2ee52b395c43bdc5e16feef)
-## 🚧 Responding to properties with a script
-Add a script that extends QodotEntity. This will give it a properties dictionary.
-You can read contents from the properties dictionary by doing the following checks in code:
-
-```gdscript
-if "name" in properties:
- properties.name
-```
-
-Then, add this script to the entity definition. I think this won’t work if it’s just a script of the scene the entity represents.
 # 🚧 Models in Trenchbroom
 You can display a model in TrenchBroom that will be built as the equivalent model in Godot. In this case, the Trenchbroom model just represents a point entity.
 The model has to be an .obj, and you have to create an entity definition in your game’s FGD for that one model. You cannot swap models in and out of Trenchbroom like you can with Source or other 2000s-era BSP workflows.
