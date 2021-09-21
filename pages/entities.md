@@ -93,7 +93,7 @@ This determines the parent entities for this class, where this entity gets all t
 
 **Class Properties** - A dictionary of properties.
 
-Once exported to the cfg, the dictionary values are written by editing entities in Trenchbroom, and read by accessing `properties` on a QodotEntity once the map is built.
+Once exported to the Trenchbroom game config, the dictionary values are written by editing entities in Trenchbroom, and read by accessing `properties` on a QodotEntity once the map is built.
 
 To add a new class property to an entity:
 
@@ -193,42 +193,35 @@ Right-click on the Filesystem dock and click Create New Resource. Make a QodotFG
 
 I recommend saving this file as your_game_name_fgd.tres so it’s easy to search for “fgd” or just your game’s name the Filesystem dock. Mine is practice_fgd.tres.
 
-Change the _Fgd Name_ to your game’s name. You can then open the Entity Definitions array, delete everything inside it, set _Size_ to 1, and drop the tree_prop.tres into the list.
-
-![](https://codahosted.io/docs/77T7fADkTg/blobs/bl-y11gfMCDG5/7db319dcfe9df0846f090b47e5cb490f59ba0f2d2520f30e7b632c08fa30b30a7d5fbeb4a29b043d0268ee9a656e86a87cdd63b59403f3d4803efbbee7cc566c26027bab11d41b8b9906e8e4d3597741436fa3776f89ae374134171658a174d26d64cb60)
+Change the _Fgd Name_ to your game’s name.
 
 **Warning:** You have to set the Fgd Name so it doesn’t conflict with the “Qodot” namespace, otherwise Trenchbroom will discard your FGD.
 
-It’s okay to delete the entity definitions that are included by default in an FGD because we can switch FGDs in Trenchbroom, and include multiple FGDs when building maps.
 
-The FGD on its own doesn't put entities into your map. We still need to update the Trenchbroom game config to include our new FGD and entity definitions, later we'll make sure the QodotMap node in our scene also catches wind of the new FGD.
+One last thing to note is that FGDs by default have example entity definitions. These can be erased, they all contain duplicates from Qodot.fgd, which we can already include as a base when updating the Trenchbroom game config and QodotMap node.
 
-### Updating your CFG
+## Adding an Entity Definition to an FGD
 
-Check the *Fgd Files* property on your `config_folder.tres` and make sure your FGD is on the list.
+With your FGD open, click on the Entity Definitions array to open it. Drop your new entity definition into any empty slot in the list.
 
-Click Export File in the Inspector.
+![](https://codahosted.io/docs/77T7fADkTg/blobs/bl-y11gfMCDG5/7db319dcfe9df0846f090b47e5cb490f59ba0f2d2520f30e7b632c08fa30b30a7d5fbeb4a29b043d0268ee9a656e86a87cdd63b59403f3d4803efbbee7cc566c26027bab11d41b8b9906e8e4d3597741436fa3776f89ae374134171658a174d26d64cb60)
 
-Go to Trenchbroom, press F6 to reload entity definitions.
+We still need to update the Trenchbroom game config to include our new entity definitions. Later we'll make sure the QodotMap node catches wind of the new entity definitions.
 
-Go to the Entity tab, unfold the Entity Definitions at the bottom, choose your game's FGD.
-
-![](../images/entity-definitions-unfolded.png)
- 
-You can now drag your entity into the map geometry to place it in Trenchbroom.
-
-## Add the FGD to your Trenchbroom game config
-Open the `config_folder.tres` resource and add a new item to the _Fgd Files_ array. Add the FGD you made by dragging and dropping, or using the folder selection button.
+## Adding FGDs to your Trenchbroom game config
+Open the `config_folder.tres` resource and add a new item to the _Fgd Files_ array. Add the FGD you made by dragging and dropping, or by using the folder selection button.
 
 ![](https://codahosted.io/docs/77T7fADkTg/blobs/bl-FzkbKV9nbb/04e6eb13407c60ff95322a0627a1dde76f89973d022315763f2abafcdf9630df2514565ef2d63dc21e5cfa9427e932f9eda3a067b1b132b17695f59704c268aeabe7fd8bb3d27fee23ab7cc49899ccc9ec875cf8a1a815d1623d4dbdd02795460e8ac106)
 
 **Note:** Make sure to save your FGD resource first by clicking the save icon in the top right, or by pressing Ctrl + S with any scene open.
 
-Click _Export File_ again. You can either restart Trenchbroom, click File → Refresh Entity Definitions, or press F6.
+Click _Export File_ again.
+
+Now you can open Trenchbroom, or go to File → Refresh Entity Definitions if you already have it open.
 
 **Note:** If you get a Trenchbroom error about incomplete strings, make sure the *Fgd Name* on your own FGD is not “Qodot”.
 
-Now you should be able to see Entity Definitions in a list. This means your FGD made it into Trenchbroom successfully, and you can move onto [Creating new Entities](#creating-new-entities).
+You should be able to see more entity definitions in the entity collections list. This means your FGD made it into Trenchbroom successfully!
 
 ![](https://codahosted.io/docs/77T7fADkTg/blobs/bl-yzq2y_LQzl/23eb7ddfe36250e9740bc5d9077f6641e0f54f06c4a9b81b386cbe5a29e874d2a647a967fa01e3b922e8bba1cfac00fdac0eb64540a1e5e0dc50bd233398cd9d8e10bd9bfed11b02e10071f72c5b1acc8990de95a1e2af4a5469f723893a646c3c2aeb63)
 
@@ -236,9 +229,9 @@ If you already have entities in your FGD, switching to your FGD should show your
 
 ![](https://codahosted.io/docs/77T7fADkTg/blobs/bl-XB0MYn9qnD/a4a1cd0ffa6043ec43d13c3358b7c57fe3f07d3e4f154696a5e6cadabc9aad17a6fa1c1953455841bc66f15b2c1d779af4a3dacdb255c47ec983bd20b43776f73d5dffd867a45d87c5f3239d589109a3fc5df7fd775b204f9387bd16701e72a1d201c44c)
 
-To build our entities in a QodotMap, we'll still need to add our updated FGD to Qodot's _Entity Fgd_ property.
-
 ## Adding FGDs to a QodotMap
+You only need to do this final step when setting up a new QodotMap.
+ 
 In your QodotMap node, open the _Entity Fgd_ array_._ Although it’s taken by Qodot.fgd by default, you can replace it with your own FGD file. Alternatively, you can open Qodot.fgd's _Base Fgd Files_ array and add your FGD there. Either works fine.
 
 ![](https://codahosted.io/docs/77T7fADkTg/blobs/bl-dHL7W0LNh8/ea03ca3a428ae30fd81851b8c544c91da07001a2e8180344a6e1272ae5290cf8f16a2adc05873764a69580142d1fd5314e807b54bb646a2044f6a07d656c1aa86a608e95a3ec23ec85ce4dc911065e59a6243d200b3bb1d35a07b2c69ae72ef1022ad94b)
@@ -247,6 +240,20 @@ Here I’ve added a size of 1 to the _Base Fgd Files_ property and dragged my FG
 Build the map, your point entity should show up!
 
 ![](https://codahosted.io/docs/77T7fADkTg/blobs/bl-Quw6e7Htp7/053b2984d5984e7d894b3e13135746c977fc0378852f87ece9241a128aea48096806d7b9ec5d75e5def8838a5cc371d20342940e4531f8a261294e71906eb1a17d76500a8407366435fe56b5af47af0dfd0e238efc3baf3a35586034851c3af78e23a5e6)
+
+Once you've added your FGD to a QodotMap once, that QodotMap will update its entity definitions with your FGD resource.
+
+## Updating your FGD
+
+When you end up making more entities and need to update your FGD, here's what needs doing:
+
+1. Add entity definitions to your FGD
+2. Save your FGD resource
+3. Open `config_folder.tres` and check that sure your FGD is on the FGD list.
+4. Click Export File
+5. Press F6 in Trenchbroom
+
+Your new entity definition should show up.
 
 # Accessing Class Properties in Code
 
@@ -277,16 +284,15 @@ func _ready:
 
 In general, instance complex nodes in code, so you don't lose access to the properties dictionary. You can do this for .tscn files too if they have no script on the root. If there is a script on the .tscn root, you can also instance the entire .tscn file (script and all) as a child added through code, as shown above.
 
-# Updating the entity pipeline
+# Entity creation examples
+
 After every entity you create, there are 3 steps to ensure that Trenchbroom and QodotMap are aware of its existence. You can do these in a batch, or one-by-one.
 
 1. Update your game's FGD to hold a new entity definition, featuring your new .tres file(s).
 2. Re-export your Trenchbroom game config with your updated FGD included.
 3. Add your FGD to a QodotMap's *Entity Fgd*, either directly, or as a *Base Fgd File* inside another FGD.
 
-## Step-by-step examples
-
-### Placing scenes with point entities
+## Placing scenes with point entities
 
 In this example, I’m going to make a point entity that will spawn a Godot scene, containing a tree with collision.
 
@@ -318,7 +324,7 @@ Now we can include this entity in a new FGD file. That way, Qodot can parse all 
 
 To learn more about working with props and entities, read the [Qodot Wiki page on Entities.](https://github.com/Shfty/qodot-plugin/wiki/4.-Entities)
 
-### Creating a Brush Entity / Solid Class
+## Creating a Brush Entity / Solid Class
 
 Create a new Solid Entity resource by searching for "solid".
 
@@ -364,7 +370,7 @@ Example:
 
 **Warning:** Add quotes surrounding your value, or TrenchBroom may crash when placing your entity class.
 
-Now that you’ve done this, you also need to update your game config every time your FGD changes. You can repeat the process for exporting a game config from earlier to overwrite the entire folder, or see **Updating a game config** in [Expert Zone](https://coda.io/d/Trenchbroom-Guide_d77T7fADkTg/Expert-Zone_suNzt) for more information on just updating the .cfg.
+Now that you’ve done this, you also need to update your game config every time your FGD changes. You can repeat the process for exporting a game config from earlier to overwrite the entire folder, or see **Updating a game config** in [Expert Zone](https://coda.io/d/Trenchbroom-Guide_d77T7fADkTg/Expert-Zone_suNzt) for more information on just updating the Trenchbroom game config.
 
 # Foreword
 
