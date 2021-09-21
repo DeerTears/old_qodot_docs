@@ -143,7 +143,15 @@ You can get around this by extending `QodotEntity` and using `var node = Node.ne
 
 ## Solid Class Properties
 
-🚧
+**Spawn Type** - Whether the class should act as the worldspawn, be merged with the worldspawn, or act as a free-standing entity.
+
+**Build Visuals** - Whether visual meshes should be built.
+
+**Physics Body Type** - As an alternative to Node Class, this determines the type of physics body node spawned during build.
+
+**Collision Shape Type** - The type of collision shape attached to the entity during build.
+
+**Script Class** - A script class applied to the entity's root node during build.
 
 # Creating an FGD file
 
