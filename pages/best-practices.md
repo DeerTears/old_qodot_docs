@@ -22,7 +22,7 @@ These are all subject to change over time as we all get more experience using Qo
 ## Don't add to Addons
 Don’t add files to the `/addons` folder yourself. Your original work can be erased if Godot auto-updates Qodot, or if you ignore the `/addons` folder in a Git repository to save on space.
 
-Instead, create a new folder on `res://` for whatever you’re adding. Ignore what the old wiki said about using `/addons/qodot/textures`.
+Instead, create a new folder on `res://` for whatever you’re adding.
 
 ## Separate your world textures
 When you set your project directory in Trenchbroom, it looks for an immediate subfolder called `/textures`. If you just want textures in the game, this is fine:
@@ -63,10 +63,10 @@ Again, this is only one example on the principle of organizing by context, not b
 ### Basic Texturing
 Here’s an example of a folder structure for basic texturing.
 ```
-- /textures
- - /foliage
- - vines.png
- - grass.png
+/textures
+	/foliage
+		vines.png
+		grass.png
 ```
 `/foliage` can be replaced by any group name you’d like. The vines* and grass* textures can be replaced by any name appropriate for the texture you're adding.
 
@@ -106,19 +106,19 @@ When you keep the .map file with your Godot project, it becomes worlds easier to
 
 Here is an example of a folder structure for creating a Quake-like game with Qodot, where one map equals one scene:
 ```
-- /levels
- - /chapter1
- - /mapsource
- - jungle1.map
- - jungle2.map
- - /scenes
- - jungle1.tscn
- - jungle2.tscn
- - /chapter2
- - /mapsource
- - volcano1.map
- - /scenes
- - volcano1.tscn
+/levels
+	/chapter1
+		/mapsource
+			jungle1.map
+			jungle2.map
+		/scenes
+			jungle1.tscn
+			jungle2.tscn
+	/chapter2
+		/mapsource
+			volcano1.map
+		/scenes
+			volcano1.tscn
 ```
 You might also want to combine several QodotMap nodes with several .map files into a single .tscn. In this case, a structure like this might be a better choice:
 ```
@@ -184,6 +184,7 @@ There are two main methods you can achieve reflections in Godot 3.x:
 -   ReflectionProbes
 
 ## Comparison of Reflection Methods
+
 | Benefit | ReflectionProbe | SS Reflections |
 | ------- | --------------- | -------------- |
 | Optimized for low-end GPUs | y | n |

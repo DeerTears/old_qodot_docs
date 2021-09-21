@@ -19,6 +19,8 @@ When using loose textures, you can use any of Qodot’s three material-building 
 - Material Override
 - Automatic PBR Texturing
 
+**Warning:** QodotMap won't read textures with spaces in the filename, including the folder it comes from. Please check your textures fit this limitation before continuing.
+
 # Comparison of Texturing Methods
 Here is a table showing a quick overview of the benefits some methods have over others.
 

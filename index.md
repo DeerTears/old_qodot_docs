@@ -23,7 +23,7 @@ Into a Godot scene like this:
 
 You can visit the [Installation](/pages/installation.html) page if you haven't installed the plugin yet.
 
-The [Beginner's Guide to Godot](/pages/beginner's-guide-to-godot.html) has everything you need to get started with Qodot on a basic level.
+The [Beginner's Guide to Qodot](/pages/beginner's-guide-to-qodot.html) has everything you need to get started with Qodot on a basic level.
 
 # How to read this guide
 _Anything In Italics_ is an editor property you can change in the Inspector.
@@ -43,6 +43,10 @@ Examples:
 
 If you see a “🚧” emoji means I’m still doing research to work out the details. You are free to contribute knowledge on the [docs Github page](https://github.com/DeerTears/DeerTears.github.io) to assist me with this section.
 
+**Note:** This is just anything I think could be an issue if left un-noticed, especially for users looking for deeper answers and explanations on systems.
+
+**Warning:** This is here to note any situation where you could lose a lot of progress or time if you move forward without heeding these words. This usually indicates pitfalls and quirks that limit the flexibility of Qodot.
+
 # Who made this?
 
 So hi, I'm Ember. I really like sharing knowledge with people, and I created this out of my desire to see something more comprehensive for teaching how the plugin works. I've spent countless hours doing research, answering user questions, and recording steps as I've put this together. This has been my largest open-source documentation project yet. I really appreciate everyone who's come to give input, feedback, and generally just use what I've written.
@@ -51,11 +55,11 @@ Currently I've written most of what's here. You can check who else has helped pu
 
 You can check out more of what I do on [Ember's personal Github page.](https://github.com/deertears)
 
-I want to sincerely thank [Shifty]((https://github.com/shfty/) for letting me take over the documentation and rebuild it from the ground up, as well as for making such a cool plugin that's enabled so many developers.
+I want to sincerely thank [Shifty](https://github.com/shfty/) for letting me take over the documentation and rebuild it from the ground up, as well as for making such a cool plugin that's enabled so many developers. We really couldn't have all been here to do this without him.
 
-A special thanks to:
+An additional thanks to:
 - MissLavender
 - kiwwi
 - elvisish
 
-I also want to thank literally anyone who's asked a question on the Qodot discord, I really enjoy responding to your questions and you all have played a part in building a better documentation!
+Thanks to everyone who's asked questions on the Qodot discord, I really enjoy responding and you all have played a part in building a better documentation!
