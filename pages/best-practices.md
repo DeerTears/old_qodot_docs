@@ -58,9 +58,9 @@ res://
 
 Again, this is only one example on the principle of organizing by context, not by file extension. This is all completely optional compared to what's described in the beginner's guide.
 
-## Examples of folder structures for materials
+# Project structure examples
 
-### Basic Texturing
+## Basic Texturing
 Here’s an example of a folder structure for basic texturing.
 ```
 /textures
@@ -72,7 +72,7 @@ Here’s an example of a folder structure for basic texturing.
 
 Only .png files or ,jpg files are valid. You can’t use both file extensions at the same time per map. You can configure this on a QodotMap node's properties.
 
-### Material Override
+## Material Override
 Either .material files, or .tres files containing a SpatialMaterial or ShaderMaterial, but not both file extensions at the same time.
 ```
 /textures
@@ -83,7 +83,7 @@ Either .material files, or .tres files containing a SpatialMaterial or ShaderMat
 		zebra.material
 ```
 
-### Automatic PBR Texturing
+## Automatic PBR Texturing
 This format is required for any material using PBR texturing.
 ```
 /textures
@@ -94,8 +94,6 @@ This format is required for any material using PBR texturing.
 			vines_roughness.png
 		vines.png
 ```
-<!--		vines.material
-I don't believe this is needed-->
 
 In the example above, the only names that can change is the group name, `/foliage`, and the material name referenced anywhere in the above structure: vines.
 You can put `/foliage` into more sub-folders if you need, so long as its contents remain the same as far as structure is concerned.
@@ -135,11 +133,11 @@ You might also want to combine several QodotMap nodes with several .map files in
 			jungle2.tscn
 ```
 
-## Good Graphics
+# Good Graphics
 One of the main benefits to using Qodot is that you can apply level design theory from the quake-era of games while using Godot’s many graphical features to make the game stand out visually.
 
 This section will cover how to use Godot’s lighting and other graphical systems in your Qodot-made levels.
-### Lighting
+## Lighting
 Godot 3.x comes with several lighting options:
 -   Dynamic lighting
 -   GIProbe
@@ -149,12 +147,12 @@ Godot 3.x comes with several lighting options:
 
 | Benefit | Dynamic Lighting | BakedLightmap | GIProbe |
 | ------- | ---------------- |-------------- | ------- |
-| Optimized for low-end GPUs | y | y | n |
-| Increases project filesize | n | y | n |
-| Updates in realtime | y | n | y |
-| Uses indirect light | n | y | y |
-| Adds to project filesize | n | y | y |
-| Photorealistic quality | n | y | y |
+| Optimized for low-end GPUs | True | True | False |
+| Increases project filesize | False | True | False |
+| Updates in realtime | True | False | True |
+| Uses indirect light | False | True | True |
+| Adds to project filesize | False | True | True |
+| Photorealistic quality | False | True | True |
 
 ### Dynamic Lighting
 
@@ -183,16 +181,16 @@ There are two main methods you can achieve reflections in Godot 3.x:
 -   Screen space reflections
 -   ReflectionProbes
 
-## Comparison of Reflection Methods
+### Comparison of Reflection Methods
 
 | Benefit | ReflectionProbe | SS Reflections |
 | ------- | --------------- | -------------- |
-| Optimized for low-end GPUs | y | n |
-| High quality | y | n |
-| Increases project filesize | y | n |
-| Updates in realtime | n | y |
-| Uses indirect light | y | n |
-| Adds to project filesize | y | n |
+| Optimized for low-end GPUs | True | False |
+| High quality | True | False |
+| Increases project filesize | True | False |
+| Updates in realtime | False | True |
+| Uses indirect light | True | False |
+| Adds to project filesize | True | False |
 
 ### ReflectionProbe
 Reflection probes provide pre-calculated reflections of an area to appear on shiny surfaces. For indoor scenes especially, this is significantly more accurate than letting the sky colour/texture determine the reflections shown on a shiny object.

@@ -35,15 +35,15 @@ Videos presented as a free course:
 # Building a Map
 Assuming your map is original, and has no textures or entities, this is the fastest way to get maps into Godot.
 
-1.  Add a .map file to your project.
+- Add a .map file to your project.
 
 ![](../images/install-map.png)
 
-2. Load it up from a QodotMap node.
+- Load it up from a QodotMap node.
 
 ![](../images/install-qodotmap.png)
 
-3. Hit Full Build.
+- Hit Full Build.
 
 ![](../images/install-fullbuild.png)
 
@@ -112,7 +112,7 @@ Once you've got a config file, Trenchbroom still needs you to manually set the *
 
 Launch Trenchbroom, click "New Map..." and select your game's name and icon from the Select Game list.
 
-https://raw.githubusercontent.com/wiki/Shfty/qodot-plugin/images/7-trenchbroom/trenchbroom-game-configs.png
+![](https://raw.githubusercontent.com/wiki/Shfty/qodot-plugin/images/7-trenchbroom/trenchbroom-game-configs.png)
 
 Once it's selected, click "Open preferences..." and find your game in the preferences list. In this example, I called my game QodotTemplate. Yours will be different depending on the _Game Name_ you set earlier in `Qodot_Trenchbroom_Config_Folder.tres`.
 
@@ -143,7 +143,6 @@ Click "+" at the bottom-right to enable it, moving it to the "enabled" collectio
 
 ![](../images/textures-enabled.png)
 
-
 # The Next Step
 
 Congratulations! You've completed the Beginner's Guide to Qodot. From having completed this guide, you should be able to build maps in Qodot and unify textures between Trenchbroom and your Godot project.
@@ -153,3 +152,22 @@ If you're interested in learning how to apply PBR materials and shaders to brush
 If you want to place Godot scenes and configure their properties using Trenchbroom, read [Entities](entities.html) for more info.
 
 If you want a breakdown of Qodot's many systems, and prepare your project for scaling up, read [Best Practices](best-practices.html).
+
+What follows below is a final few points that don't fit into these other categories, but are still important to know.
+
+# Clipping
+
+QodotMap lets you choose one texture to act as your "clip" texture.
+
+In the Clip Texture property, add the subfolder and image name for your clip texture without the file extension.
+
+For example, if I have this folder structure:
+
+```
+res://
+	/textures
+		/special
+			clip.png
+```
+
+I can make clip.png my clip texture by adding `/special/clip` into the Clip Texture field of a QodotMap.
