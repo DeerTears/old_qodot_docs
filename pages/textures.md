@@ -19,7 +19,7 @@ When using loose textures, you can use any of Qodot’s three material-building 
 - Material Override
 - Automatic PBR Texturing
 
-**Warning:** QodotMap won't read textures with spaces in the filename, including the folder it comes from. Please check your textures fit this limitation before continuing.
+**Warning:** QodotMap won't read textures with spaces in the filename, including the folder it comes from. Please check your textures fit this naming scheme before continuing.
 
 # Comparison of Texturing Methods
 Here is a table showing a quick overview of the benefits some methods have over others.
@@ -46,6 +46,7 @@ Read [Connecting your project to Trenchbroom](../Beginner's-Guide-to-Qodot#conne
 
 # Material Override
 When you name a texture panel.png, Qodot interprets it as a new material called panel. In Basic Texturing, you’re creating a SpatialMaterial with the Albedo set to panel.png.
+
 If you name a texture and a .material or .tres file the same name (not including the extension) you can **override** any instances of panel.png on a Trenchbroom brush with a panel.material in Godot.
 
 In this example, I’m using an ice shader written in GLSL, originally from: [https://godotshaders.com/shader/spatial-ice-shader/](https://godotshaders.com/shader/spatial-ice-shader/)
@@ -58,7 +59,13 @@ Both the image and the .material share the same name. If we go to Trenchbroom, w
 
 Then we double-check the file extensions we’re using on the QodotMap node are png and material (or tres if that’s what you prefer to use)
 
+1.7.0:
+
 ![](../images/materials-file-extensions.png)
+
+1.7.1 downloaded from [https://github.com/Shfty/qodot-plugin/](https://github.com/Shfty/qodot-plugin/):
+
+![](../images/materials-file-extension-array.png)
 
 Building our map should show the ice shader in place of the texture with the same name.
 
