@@ -9,7 +9,3 @@ I won't accept your friend request if you're not already in the [Qodot Discord](
 Not all information from [the official Qodot wiki on Github](https://github.com/Shfty/qodot-plugin/wiki/) is here. However, once this guide covers most use cases for the tool, the plan is to supersede the wiki using an official documentation repository through a more-official Qodot website.
 
 While these docs aren't done, nor are they official yet, you are welcome to submit PRs to make corrections. If you think something big needs changing, please contact me through the [Qodot Discord](https://discord.gg/c72WBuG) first.
-
----
-
-This one-page guide is instead intended for all Qodot users (beginners or rusty veterans) who are looking to understand more about the plugin with step-by-step instructions.
