@@ -1,27 +1,35 @@
 ---
 layout: default
-title: Textures
-nav_order: 3
+title: Materials
+nav_order: 6
 ---
 
 1. TOC
 {:toc}
 
 # Introduction
-There are two ways Qodot reads textures from a map file:
-- Loose image files
-- .wad files
 
-Information on [using .wad files](https://github.com/Shfty/qodot-plugin/wiki/3.-Textures-and-Materials#wad-file-support) is available on the old Qodot Wiki. I still need to research the application of .wad files, especially when trying to apply more complicated materials. The rest of this guide covers loose image files.
-
-When using loose textures, you can use any of Qodot’s three material-building processes to paint your level in ShaderMaterials and SpatialMaterials. They are:
+Godot has several options for displaying PBR materials and shaders in 3D. You can use three of Qodot's material pipelines to convert textures on your map to materials in Godot. These are:
 - Basic Texturing
 - Material Override
 - Automatic PBR Texturing
 
-**Warning:** QodotMap won't read textures with spaces in the filename, including the folder it comes from. Please check your textures fit this naming scheme before continuing.
+The rest of this guide will be looking through these three options, and how you can setup your Godot project to automatically apply PBR materials and shaders to surfaces.
+
+🚧 Information on [using .wad files](https://github.com/Shfty/qodot-plugin/wiki/3.-Textures-and-Materials#wad-file-support) is available on the old Qodot Plugin wiki.
+
+# Prerequisites and words of warning
+
+You should have your own texture files to apply to surfaces. If you installed the entire plugin, you are free to copy the textures in `res://addons/qodot/textures` to your own project directory, into a folder like `res://textures`.
+
+**Note:** Qodot 1.7.0 only allows one texture file extension for a QodotMap. This is fixed in Qodot 1.7.1 and up, letting you use an array of texture extensions. Consider updating the plugin if you are struggling to load textures from multiple file extensions.
+
+**Warning:** Do not use `res://addons/qodot/textures` directly, without first copying them to a folder outside of `res://addons/qodot`. Otherwise you risk losing your work if you update the Qodot plugin.
+
+**Warning:** In all Qodot versions including 1.7.1, Qodot won't read textures with spaces in the filename, including the folder it came from. Please check that your textures fit this naming scheme before continuing.
 
 # Comparison of Texturing Methods
+
 Here is a table showing a quick overview of the benefits some methods have over others.
 
 Benefit | Basic Texturing | Material Override | Auto PBR Texturing
@@ -45,6 +53,7 @@ Basic texturing applies an image to the brushes in your map. You can still contr
 Read [Connecting your project to Trenchbroom](../Beginner's-Guide-to-Qodot#connecting-your-project-to-trenchbroom) to learn how to get textures applied to your map.
 
 # Material Override
+
 When you name a texture panel.png, Qodot interprets it as a new material called panel. In Basic Texturing, you’re creating a SpatialMaterial with the Albedo set to panel.png.
 
 If you name a texture and a .material or .tres file the same name (not including the extension) you can **override** any instances of panel.png on a Trenchbroom brush with a panel.material in Godot.
@@ -76,6 +85,7 @@ If this didn’t work, and you followed all instructions, try changing the mater
 To learn even more about working with materials, read the [Qodot Wiki page on Textures and Materials.](https://github.com/Shfty/qodot-plugin/wiki/3.-Textures-and-Materials)
 
 # Automatic PBR Texturing
+
 You can use Automatic PBR Texturing to let Qodot do the hard work of assembling a SpatialMaterial for you, so long as you give it PBR maps and name them appropriately. 
 
 **This method doesn’t let you tweak the materials after without undoing your work every build**. It's intended more-or-less to mass-import PBR materials onto a map. If you want more control, use **Material Override** instead.

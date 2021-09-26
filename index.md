@@ -1,21 +1,21 @@
 ---
 layout: default
 title: Home
-<!--nav_exclude: true-->
 nav_order: 1
 ---
 
 # Welcome!
 
-This is the new, official documentation for [Qodot Plugin](https://github.com/QodotPlugin/qodot-plugin), a Quake-to-Godot plugin created by Shifty and the Godot community.
+This is the new official documentation for [Qodot Plugin](https://github.com/QodotPlugin/qodot-plugin), a Quake-to-Godot plugin created by Shifty and the Godot community.
 
-Qodot is a powerful and complex tool to convert Quake maps into Godot geometry, collisions, and scenes. Using modern Quake mapping tools like [Trenchbroom](https://trenchbroom.github.io/), you can leverage Qodot as a level design tool for Godot. You can learn more and see examples of Qodot in action on the [Qodot Plugin Readme](https://github.com/QodotPlugin/qodot-plugin).
+Qodot is a powerful and complex tool to convert Quake maps into Godot nodes. You can use map editors like [Trenchbroom](https://trenchbroom.github.io/) as a level design tool for your Godot project, using Qodot Plugin to bridge the gap between these two programs.
 
-You can visit the [Installation](/pages/installation.html) page if you haven't installed the plugin yet.
+[Beginner's Guide to Qodot](/pages/beginner's-guide-to-qodot.html) should be the first place you look if you're new to the plugin.
 
-The [Beginner's Guide to Qodot](/pages/beginner's-guide-to-qodot.html) has everything you need to get started with Qodot on a basic level.
+## How to read this guide
 
-# How to read this guide
+This guide follows a few formatting principles to clarify some of the technical wording.
+
 _Anything In Italics_ is an editor property you can change in the Inspector.
 
 Examples:
@@ -31,11 +31,13 @@ Examples:
 -   Transform → Position → X
 -   Project → Project Settings → Plugins
 
-If you see a “🚧” emoji means I’m still doing research to work out the details. You are free to contribute knowledge on the [docs Github page](https://github.com/DeerTears/DeerTears.github.io) to assist me with this section.
+Any instances of the 🚧 emoji means that this section is not totally researched. You are more than welcome to contribute to [This Wiki's Github page](https://github.com/QodotPlugin/qodotplugin.github.io) to fill out these missing details.
 
-**Note:** This is just anything I think could be an issue if left un-noticed, especially for users looking for deeper answers and explanations on systems.
+If you are struggling to find information, there's a chance it has been covered by [The Old Qodot Plugin wiki](https://github.com/QodotPlugin/qodot-plugin/wiki) or the [Trenchbroom Manual](https://trenchbroom.github.io/manual/latest/). Please [raise an issue](https://github.com/QodotPlugin/qodotplugin.github.io/issues/new) if you notice any missing information!
 
-**Warning:** This is here to note any situation where you could lose a lot of progress or time if you move forward without heeding these words. This usually indicates pitfalls and quirks that limit the flexibility of Qodot.
+Any text with **Note:** indicates "gotcha" scenarios for less-common situations, or to emphasize any details that are too important to skip during the process.
+
+Any text with **Warning:** is here to prevent you from losing a lot of progress or time. This usually indicates pitfalls and quirks that limit the flexibility of Qodot Plugin.
 
 # Who made this?
 

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Entities
-nav_order: 4
+nav_order: 7
 ---
 
 1. TOC
@@ -11,21 +11,16 @@ nav_order: 4
 Entities tie Godot functionality to 3D positions and specially-marked brushes in your map file.
 
 There are two main types of entities:
-- Point Classes (Point Entities)
-- Solid Classes (Brush Entities)
+- Point Classes (Point Entities in Hammer)
+- Solid Classes (Brush Entities in Hammer)
 
 A Point Entity is a position in 3D space. They work well for spawn locations, pickups, enemies and more. Point Entities are useful for instanciating Godot scenes in 3D space. Having collisions, visuals, or scripts are completely optional for any given Point Entity.
 
 Brush Entities are brushes with a script attached. By default, they are grouped separately from the world geometry, letting you transform and manipulate each Solid Class individually. One example is using a "physics" Brush Class to let the brush interact with physics. Multiple brushes can be a part of a single Solid Class.
 
-**Note:** Keep in mind that "Entities" and "Classes" mean the same thing for this entire page. Qodot calls them classes, Trenchbroom calls them entities. This has nothing to do with the concept of classes in GDscript. This also applies for "Brush" and "Solid", Qodot calls them solid entities, Trenchbroom calls them brush entities. Godot on its own doesn't understand "brushes", rather it holds collision and geometry for groups of nodes once they're built through a QodotMap node.
+Keep in mind that "Entities" and "Classes" mean the same thing for this entire page. Qodot calls them classes, Trenchbroom calls them entities. This has nothing to do with the concept of classes in GDscript.
 
-You are given some entity definitions through `Qodot.fgd`, such as
-- Light
-- Breakable
-- Ball
-
-These example entities have limited functionality, but they exist as an example of what can be done.
+This also applies for "Brush" and "Solid", Qodot calls them solid entities, Trenchbroom calls them brush entities. Godot on its own doesn't understand "brushes", rather it holds collision and geometry for groups of nodes once they're built through a QodotMap node.
 
 # Creating new Entities
 
@@ -371,6 +366,17 @@ Example:
 **Warning:** Add quotes surrounding your value, or TrenchBroom may crash when placing your entity class.
 
 Now that you’ve done this, you also need to update your game config every time your FGD changes. You can repeat the process for exporting a game config from earlier to overwrite the entire folder, or see **Updating a game config** in [Expert Zone](https://coda.io/d/Trenchbroom-Guide_d77T7fADkTg/Expert-Zone_suNzt) for more information on just updating the Trenchbroom game config.
+
+# Example Entities
+
+You are given some entity definitions through `Qodot.fgd`, such as
+- Light
+- Breakable
+- Ball
+
+These example entities have limited functionality, but they exist as an example of what can be done.
+
+Not all of them are included in the default Qodot.fgd, and most do not provide expected functionality. Consider creating your own entities instead.
 
 # Foreword
 
