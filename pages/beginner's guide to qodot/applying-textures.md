@@ -5,10 +5,7 @@ nav_order: 5
 parent: Beginner's Guide to Qodot 
 ---
 
-1. TOC
-{:toc}
-
-# How to apply textures to your QodotMap
+# Applying Textures
 
 While you can follow the steps shown in [Building Maps](building-maps.md), most maps will be missing textures. While you can manually add textures to material slots in the MeshInstance node, Qodot can automate the process of applying textures to your map geometry.
 
@@ -25,11 +22,16 @@ The rest of this page will go through each of these steps.
 
 **Warning:** Never add new files to the `res://addons/qodot` folder. Anything you add here will be erased since Qodot can auto-update through AssetLib. You are free to use or remove files in `res://addons/qodot` as illustrated later in this page.
 
-## Preparing Godot folder structure
+Table of Contents:
+
+1. TOC
+{:toc}
+
+## Creating a Textures folder
 
 Trenchbroom reads your Godot project's textures by looking for a folder called `/textures` on the top level of your Godot project, then looking for a subfolder that groups these textures. The subfolder can be called anything. One example of this is `res://textures/group_name`, where `/group_name` can be any name to group textures with.
 
-## Creaing a Trenchbroom game config in Qodot
+## Making a Trenchbroom game config
 
 A Trenchbroom game configuration (stored as a .cfg file) tells Trenchbroom about the name of your game, and where your game's project directory is.
 
@@ -69,7 +71,7 @@ Finally, click the _Export File_ checkbox at the top. Your game config should no
 
 The next two steps will ensure Trenchbroom can read your project's textures, and so Qodot can correctly read those textures and apply it to geometry in Godot.
 
-## Setting Game Path in Trenchbroom
+## Setting Trenchbroom Game Path
 
 Once you've got a config file, Trenchbroom is ready for you to manually set the *Game Path* property in its Preferences menu. Once set, Trenchbroom will be able to read any images inside your Godot project’s `res://textures/group_name/` folder.
 
@@ -87,7 +89,7 @@ You can now create a new map with your Godot project as the game type.
 
 **Note:** If you're having trouble clicking the apply button on the window, temporarily increase your screen's resolution. Not clicking apply here can cause issues later on when reloading Trenchbroom.
 
-## Enabling Texture Collections in Trenchbroom
+## Enabling Trenchbroom Texture Collections
 
 You can only enable a texture collection if your project has the following conditions:
 - You have your Godot project's .cfg in Trenchbroom's `/games` folder.

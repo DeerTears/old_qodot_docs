@@ -5,7 +5,8 @@ nav_order: 4
 parent: Beginner's Guide to Qodot 
 ---
 
-# Building a Map
+# Building Maps
+
 Assuming your map fits the list of supported .map formats, and has limited entities, this is the fastest way to get your map into Godot.
 
 - Add a .map file to your Godot project directory.
