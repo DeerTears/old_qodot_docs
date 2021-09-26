@@ -7,7 +7,7 @@ nav_order: 6
 1. TOC
 {:toc}
 
-# Introduction
+# Materials
 
 Godot has several options for displaying PBR materials and shaders in 3D. You can use three of Qodot's material pipelines to convert textures on your map to materials in Godot. These are:
 - Basic Texturing
@@ -18,7 +18,7 @@ The rest of this guide will be looking through these three options, and how you 
 
 🚧 Information on [using .wad files](https://github.com/Shfty/qodot-plugin/wiki/3.-Textures-and-Materials#wad-file-support) is available on the old Qodot Plugin wiki.
 
-# Prerequisites and words of warning
+## Prerequisites and words of warning
 
 You should have your own texture files to apply to surfaces. If you installed the entire plugin, you are free to copy the textures in `res://addons/qodot/textures` to your own project directory, into a folder like `res://textures`.
 
@@ -28,7 +28,7 @@ You should have your own texture files to apply to surfaces. If you installed th
 
 **Warning:** In all Qodot versions including 1.7.1, Qodot won't read textures with spaces in the filename, including the folder it came from. Please check that your textures fit this naming scheme before continuing.
 
-# Comparison of Texturing Methods
+## Comparison of Texturing Methods
 
 Here is a table showing a quick overview of the benefits some methods have over others.
 
@@ -46,13 +46,13 @@ Material Override applies a .material or .tres of the same name as your texture 
 
 Automatic PBR Texturing tells Qodot to create SpatialMaterials for you when building, provided you have named all texture files to follow the Qodot PBR naming format.
 
-# Basic Texturing
+## Basic Texturing
 
 Basic texturing applies an image to the brushes in your map. You can still control if filtering and other import effects are used by double-clicking the texture and changing the settings in the Import dock.
 
 Read [Connecting your project to Trenchbroom](../Beginner's-Guide-to-Qodot#connecting-your-project-to-trenchbroom) to learn how to get textures applied to your map.
 
-# Material Override
+## Material Override
 
 When you name a texture panel.png, Qodot interprets it as a new material called panel. In Basic Texturing, you’re creating a SpatialMaterial with the Albedo set to panel.png.
 
@@ -84,7 +84,7 @@ If this didn’t work, and you followed all instructions, try changing the mater
 
 To learn even more about working with materials, read the [Qodot Wiki page on Textures and Materials.](https://github.com/Shfty/qodot-plugin/wiki/3.-Textures-and-Materials)
 
-# Automatic PBR Texturing
+## Automatic PBR Texturing
 
 You can use Automatic PBR Texturing to let Qodot do the hard work of assembling a SpatialMaterial for you, so long as you give it PBR maps and name them appropriately. 
 
@@ -117,3 +117,22 @@ To apply a PBR material in Trenchbroom, include only the folder that contains th
 For less control, but quicker setup, you can apply a default material to every single brush face in the map using the Default Material property in a QodotMap. This can be useful if you’re using Qodot to import models and you don’t want to setup textures or materials using any of the above methods.
 
 ![](../images/materials-default.png)
+
+## Clipping
+
+As an aside, clipping is a unique feature that allows QodotMap to build collisions without any mesh geometry.
+
+A QodotMap node lets you choose one texture in your project directory to act as your "clip" texture.
+
+In the Clip Texture property, add the subfolder and image name for your clip texture without the file extension.
+
+For example, if you have this for your Godot folder structure:
+
+```
+res://
+	/textures
+		/special
+			clip.png
+```
+
+You can set clip.png as the clip texture by adding `/special/clip` into the Clip Texture field of a QodotMap.

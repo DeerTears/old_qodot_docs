@@ -65,13 +65,13 @@ Quake Builder's YouTube video on [Creating Quake-like textures with Asesprite](h
 
 ### Level Design
 
-[Layout theory](https://www.youtube.com/watch?v=G4tWWiuaF7g)
-
-Quake Builder's YouTube video on [Designing multiple difficulties](https://youtu.be/s9bleQCTdTo).
-
-Following a Style: [Archived gamespy text interview with John Romero](http://web.archive.org/web/20111121052306/https://archive.gamespy.com/articles/december03/doom/romero/).
+Quake Builder's YouTube Videos on:
+- [Layout theory](https://www.youtube.com/watch?v=G4tWWiuaF7g)
+- [Designing multiple difficulties](https://youtu.be/s9bleQCTdTo).
 
 Chubzdoomer's YouTube video on [John Romero's Level Design Rules in DOOM](https://youtu.be/ptHurafdCoQ).
+
+Following a style: [Archived gamespy text interview with John Romero](http://web.archive.org/web/20111121052306/https://archive.gamespy.com/articles/december03/doom/romero/).
 
 ## Godot Character Controllers
 
@@ -89,5 +89,5 @@ Where to learn to make your own character controller in Godot.
 
 | Name | Link |
 | ---- | ---- |
-| Shifty's Manifesto | [https://markdownpastebin.com/?id=d9d61e67f9d64db2bd215f165b931449](https://markdownpastebin.com/?id=d9d61e67f9d64db2bd215f165b931449) |
-| nvidia gameworks docs on stair-stepping | [https://docs.nvidia.com/gameworks/content/gameworkslibrary/physx/guide/Manual/CharacterControllers.html](https://docs.nvidia.com/gameworks/content/gameworkslibrary/physx/guide/Manual/CharacterControllers.html) |
+| Shifty's Manifesto | [Markdown Pastebin Link](https://markdownpastebin.com/?id=d9d61e67f9d64db2bd215f165b931449) |
+| Nvidea Gameworks on Stair-Stepping | [Nvidea Gameworks Docs](https://docs.nvidia.com/gameworks/content/gameworkslibrary/physx/guide/Manual/CharacterControllers.html) |
