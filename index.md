@@ -1,25 +1,15 @@
 ---
 layout: default
-title: Introduction
+title: Home
 <!--nav_exclude: true-->
 nav_order: 1
 ---
 
-This website is currently under heavy development. Not all information is up to date or accurate, please help me out by testing what's written. [Submit an issue for this repo's Github page](https://github.com/DeerTears/DeerTears.github.io/issues) or ping Ember on the Qodot discord if you see anything that needs fixing.
-
 # Welcome!
 
-This is the (almost!) official documentation for [Qodot](https://github.com/shfty/qodot-plugin), a Quake-to-Godot plugin created by Shifty.
+This is the new, official documentation for [Qodot Plugin](https://github.com/QodotPlugin/qodot-plugin), a Quake-to-Godot plugin created by Shifty and the Godot community.
 
-Qodot is a powerful and complex tool to convert Quake maps into Godot geometry, collisions, and scenes. Using modern Quake mapping tools like [Trenchbroom](https://trenchbroom.github.io/), you can leverage Qodot as a level design tool for Godot.
-
-When configured in full, you can do all of your Godot game's level design, scene placement, and property-tweaking in Trenchbroom, using Godot to build the contents of the map. You can turn a Trenchbroom map like this:
-
-![](images/intro-trench.png)
-
-Into a Godot scene like this:
-
-![](images/intro-qodot.png)
+Qodot is a powerful and complex tool to convert Quake maps into Godot geometry, collisions, and scenes. Using modern Quake mapping tools like [Trenchbroom](https://trenchbroom.github.io/), you can leverage Qodot as a level design tool for Godot. You can learn more and see examples of Qodot in action on the [Qodot Plugin Readme](https://github.com/QodotPlugin/qodot-plugin).
 
 You can visit the [Installation](/pages/installation.html) page if you haven't installed the plugin yet.
 

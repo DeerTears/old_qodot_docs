@@ -2,6 +2,7 @@
 layout: default
 title: Installation
 nav_order: 1
+parent: Beginner's Guide to Qodot
 ---
 
 Create a new Godot project, or load an existing one.
