@@ -20,7 +20,7 @@ The rest of this guide will be looking through these three options, and how you 
 
 ## Prerequisites and words of warning
 
-You should have your own texture files to apply to surfaces. If you installed the entire plugin, you are free to copy the textures in `res://addons/qodot/textures` to your own project directory, into a folder like `res://textures`.
+For loose textures, you should have your own texture files to apply to surfaces. If you installed the entire plugin, you are free to copy the textures in `res://addons/qodot/textures` to your own project directory, into a folder like `res://textures`.
 
 **Note:** Qodot 1.7.0 only allows one texture file extension for a QodotMap. This is fixed in Qodot 1.7.1 and up, letting you use an array of texture extensions. Consider updating the plugin if you are struggling to load textures from multiple file extensions.
 
@@ -136,3 +136,21 @@ res://
 ```
 
 You can set clip.png as the clip texture by adding `/special/clip` into the Clip Texture field of a QodotMap.
+
+## WAD File Support
+
+Qodot adds palette.lmp and texture WAD import support to the Godot editor, allowing textures to be extracted and converted to RGB for in-engine use.
+
+`.lmp` and `.wad` files will be automatically imported upon adding them to a project, and their contents can be viewed directly by double-clicking on their resources in the FileSystem tab:
+
+![](https://raw.githubusercontent.com/wiki/QodotPlugin/qodot-plugin/images/3-textures-and-materials/palette-file.png)
+
+![](https://raw.githubusercontent.com/wiki/QodotPlugin/qodot-plugin/images/3-textures-and-materials/wad-file.png)
+
+To use a set of WAD files with QodotMap, add them to the Texture Wads property in the Inspector:
+
+![](https://raw.githubusercontent.com/wiki/QodotPlugin/qodot-plugin/images/3-textures-and-materials/qodot-map-wads.png)
+
+The texture loader will scan each WAD for textures present in the map and load them as appropriate.
+
+**Note:** As the palette.lmp file from Quake was released into the public domain, it's included with Qodot to simplify the import of common texture WADs.

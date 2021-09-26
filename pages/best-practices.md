@@ -133,10 +133,26 @@ You might also want to combine several QodotMap nodes with several .map files in
 			jungle2.tscn
 ```
 
+# Inverse Scale Factor
+
+The `Inverse Scale Factor` setting on the `QodotMap` node determines the mapping between Quake units - used in TrenchBroom and other editors - to Godot's metric coordinate system. All coordinates are divided by this value during build.
+
+Having a well-defined mapping from Quake units to the ones used by your game is important - it can make it easier to reason about the layout of your maps, and having your object scale translate properly to the equivalent real-world measurement will result in more accurate physics simulation.
+
+As the metric used by map files varies game-by-game, this setting is dependent on your assets, game logic and physics simulation, and will have to be decided on a case-by-case basis. The table below lists some common examples, as well as reasoning for their usage.
+
+|              Name | Inverse Scale Factor |     1qu |    2qu |    4qu |    8qu |   16qu | Notes |
+| ----------------: | :------------------- | :------ | :----- | :----- | :----- | :----- | :---- |
+|  .map Passthrough |                    1 |       1 |      2 |       4|      8 |     16 | 1:1 with map file, Godot grid corresponds to TrenchBroom grid. Will result in very large geometry by Godot standards. |
+|     Qodot Default |                   16 |  0.0625 |  0.125 |   0.25 |    0.5 |    1.0 | 'Best effort' mapping from Quake 1 environments to metric. |
+|          Uradamus |                   40 |   0.025 |   0.05 |    0.1 |    0.2 |    0.4 | Artist-friendly setting with tidy fractional numbers. |
+| Valve Environment |       52.49343832021 | 0.01905 | 0.0381 | 0.0762 | 0.1524 | 0.3048 | Half Life 1/2 environment metric. |
+
 # Good Graphics
 One of the main benefits to using Qodot is that you can apply level design theory from the quake-era of games while using Godot’s many graphical features to make the game stand out visually.
 
 This section will cover how to use Godot’s lighting and other graphical systems in your Qodot-made levels.
+
 ## Lighting
 Godot 3.x comes with several lighting options:
 -   Dynamic lighting
@@ -153,6 +169,61 @@ Godot 3.x comes with several lighting options:
 | Uses indirect light | False | True | True |
 | Adds to project filesize | False | True | True |
 | Photorealistic quality | False | True | True |
+
+### Baked Lightmaps
+
+Qodot supports Godot's static lighting pipeline via a UV2 unwrap option available in the action menu of a QodotMap:
+
+#### Lightmap Volumes
+
+In order to bake static lighting for your map in Godot, it must be covered with a set of BakedLightmap volumes. How many are necessary will depend on the side of your map and number of lights- if you try to bake too much at once the editor will crash, so larger maps will need to be split into multiple volumes.
+
+There are some limitations to be mindful of when doing this:
+- Each mesh can only be affected by a single lightmap volume
+	- Meshes overlapping multiple BakedLightmap volumes will draw from whichever one is lower in the scene tree
+- If using BakedLightmap volumes, each will need to have its `Image Path` property set to a different folder
+	- Lightmaps are saved alongside the scene file by default, which causes overwrites
+- The editor will only update multiple lightmap volumes on scene reload
+	- Be sure to save and reload your scene after baking multiple volumes in order to see correct results
+
+#### Lighting Behaviours
+
+- Energy vs Indirect Energy
+  - Energy is used for dynamic lighting
+  - Energy and Indirect energy both contribute to static lighting if `Bake Mode` is set to `All`
+
+- Light Settings
+  - Bake Indirect is used to supplement dynamic direct lighting with baked indirect lighting
+    - Results in a hybrid baked + dynamic light
+  - Bake All is used to bake both direct and indirect lighting
+    - Dynamic lights set to Bake All must have all their render layers disabled for correct results
+
+#### ConeTrace vs RayTrace
+
+- ConeTrace
+	- More accurate to dynamic lighting system
+	- Similar metrics, so light settings are easily transferable
+	- Shorter bake times on account of a simpler algorithm
+	- Global illumination / sky lighting
+		- Activated by setting `Propagation` to 1
+		- Controlled by baked directional lights
+- RayTrace
+    - Better quality overall
+	- More accurate to real-world light behavior
+	- Metrics are incompatible with dynamic lighting system
+	- Requires more art time to refine
+
+Some unexpected behavior with certain light types is that spotLight uses both Energy and Indirect energy for baked lighting in RayTrace mode.
+
+Using a Node as the parent of a BakedLightmap will break it out of the scene hierarchy, this allows the user to group meshes and lights together for baking in isolation.
+
+#### Tips on Baked Lightmaps
+
+Godot's lightmap process will crash if too many lights or meshes are used. Grouping rooms into Trenchbroom groups rather than a single worldspawn is recommended for baking lights on larger maps/
+
+Be sure to save often or use version control software like Git to avoid loss of work.
+
+Larger maps should be saved as .scn instead of .tscn in order to minimize saving and loading overhead
 
 ### Dynamic Lighting
 

@@ -25,7 +25,6 @@ When the importer is done, go to Project → Project Settings -> Plugins. By def
 
 ![](../../images/install-plugin-enable.png)
 
-
 ## Updating
 
 When updating, make sure to delete `/addons/qodot` from your project before installing a newer version, in order to avoid script errors arising from mis-matched code.
