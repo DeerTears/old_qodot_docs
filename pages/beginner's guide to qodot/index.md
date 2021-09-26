@@ -19,10 +19,10 @@ The [Additional Resources](../additional-resources.html) page has a list of reso
 
 ## Getting Started
 
-You can read:
+To get started with Qodot, you can read:
 
 1. [Installation](installation.md) to install the plugin from a blank, or otherwise Qodot-less project.
-2. [Building Maps](building-maps.md) to learn absolute basics of building maps.
-3. [Applying Textures](applying-textures.md) to integrate Trenchbroom with Godot, so you can apply your Godot project's textures using Trenchbroom.
+2. [Building Maps](building-maps.md) to learn the absolute basics of building maps.
+3. [Applying Textures](applying-textures.md) to learn how to apply your Godot project's textures to geometry using Trenchbroom.
 
-After reading all three pages, you will know the basics of using Qodot to build maps and texutre them.
+After reading all three pages, you will be able to build and texture maps for Godot using Trenchbroom.
