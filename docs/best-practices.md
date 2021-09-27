@@ -7,7 +7,7 @@ nav_order: 9
 1. TOC
 {:toc}
 
-# Introduction
+# Best Practices
 
 This document covers several topics including how to:
 - Organize your project folders

@@ -7,6 +7,8 @@ nav_order: 10
 1. TOC
 {:toc}
 
+# Additional Resources
+
 # Community Forums and Discords
 
 If you need help during any step of the process, you can reach out to these communities to get more info about the corresponding process.

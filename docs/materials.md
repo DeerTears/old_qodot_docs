@@ -90,28 +90,46 @@ You can use Automatic PBR Texturing to let Qodot do the hard work of assembling 
 
 **This method doesn’t let you tweak the materials after without undoing your work every build**. It's intended more-or-less to mass-import PBR materials onto a map. If you want more control, use **Material Override** instead.
 
-All PBR maps work off of a base texture. The base texture serves as the Albedo/Diffuse, as well as the texture shown in Trenchbroom. To get Automatic PBR Texturing to work:
-1.  Create a texture inside a subfolder: textures/foliage/vines.png
-2.  Create a folder in the same directory with the texture’s name: textures/foliage/vines/
-3.  Using the texture’s name, append suffixes to make up the PBR maps.
+To setup Automatic PBR Texturing
 
-**Example:**
+1.  Create a texture inside a subfolder: textures/group_name/texture_name.png
+2.  Create a subfolder in the same directory with the texture’s name: textures/group_name/texture_name/
+3.  Add textures to the subfolder that use the suffixes set in Project Settings -> Qodot -> Textures.
+
+By default, Qodot has these suffixes set up to automatically build PBR textures:
+
+- _normal.
+- _metallic.
+- _depth.
+- _roughness.
+- _ao.
+- _emission.
+
+Your texture name should come before the underscore, and your file extension should come after the dot. An example for a normal map in a PBR material would be `texture_name_normal.png` Any Godot-readible file extension will work.
+
+The raw `texture_name.png` is always used as an editor texture *and* an Albedo texture.
+
+If this pattern doesn't work for your material piplines, you can change the pattern of the filenames in Project Settings -> Qodot -> Textures.
+
+![](..images/materials-custom-pattern.png)
+
+Here's an example of a vines texture set up to work with auto pbr:
+
 ```
-- /textures
- - /foliage
- - /vines
- - vines_normal.png
- - vines_displacement.png
- - vines_roughness.png
- - vines.png
- - vines.material
+res://
+	/textures
+		/foliage
+			/vines
+				vines_normal.png
+				vines_displacement.png
+				vines_roughness.png
+				vines_ao.png
+			vines.png
 ```
 
-In the example above, the only names that can change is the group name, `/foliage`, and the material name, "vines".
+When applying an Auto PBR material in Trenchbroom, you do not have to include any of the PBR maps with suffixes. Just the texture without any suffixes is required.
 
-You can put `/foliage` into more subfolders if you need, so long as its contents remain the same as far as structure is concerned.
-
-To apply a PBR material in Trenchbroom, include only the folder that contains the Albedo texture, vines.png.
+**Tip:** Since you can separate albedo from editor textures, it may help to add a grid or other distinguishing features of the material as a part of its editor texture, to aid in aligning the texture to neighbouring brushes.
 
 # Default Material
 For less control, but quicker setup, you can apply a default material to every single brush face in the map using the Default Material property in a QodotMap. This can be useful if you’re using Qodot to import models and you don’t want to setup textures or materials using any of the above methods.

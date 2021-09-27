@@ -8,9 +8,11 @@ nav_order: 1
 
 This is the new official documentation for [Qodot Plugin](https://github.com/QodotPlugin/qodot-plugin), a Quake-to-Godot plugin created by Shifty and the Godot community.
 
-Qodot is a powerful and complex tool to convert Quake maps into Godot nodes. You can use map editors like [Trenchbroom](https://trenchbroom.github.io/) as a level design tool for your Godot project, using Qodot Plugin to bridge the gap between these two programs.
+[Beginner's Guide to Qodot](/docs/beginner's-guide-to-qodot/) should be the first place you look if you're new to the plugin.
 
-[Beginner's Guide to Qodot](/pages/beginner's-guide-to-qodot.html) should be the first place you look if you're new to the plugin.
+## What is Qodot Plugin?
+
+Qodot Plugin is a powerful and complex tool to convert Quake maps into Godot meshes, collisions, and scenes. You can use map editors like [Trenchbroom](https://trenchbroom.github.io/) as a level design tool for your Godot project, using Qodot Plugin to bridge the gap between these two programs.
 
 ## How to read this guide
 
@@ -39,19 +41,12 @@ Any text with **Note:** indicates "gotcha" scenarios for less-common situations,
 
 Any text with **Warning:** is here to prevent you from losing a lot of progress or time. This usually indicates pitfalls and quirks that limit the flexibility of Qodot Plugin.
 
-# Who made this?
+## Who made this?
 
-So hi, I'm Ember. I really like sharing knowledge with people, and I created this out of my desire to see something more comprehensive for teaching how the plugin works. I've spent countless hours doing research, answering user questions, and recording steps as I've put this together. This has been my largest open-source documentation project yet. I really appreciate everyone who's come to give input, feedback, and generally just use what I've written.
+So hi, I'm [Ember](https://github.com/deertears/). I really like sharing knowledge with people, and I created this out of my desire to see something more comprehensive for teaching how the plugin works. I've spent countless hours doing research, answering user questions, and recording steps as I've put this together. This has been my largest open-source documentation project yet. I really appreciate everyone who's come to give input, feedback, and generally just use what I've written.
 
-Currently I've written most of what's here. You can check who else has helped put this website together here by checking [the Contributors list.](https://github.com/DeerTears/deertears.github.io/graphs/contributors)
+The Jekyll theme is [Just the Docs](https://github.com/pmarsceill/just-the-docs) made by [pmarsceill](https://github.com/pmarsceill/).
 
-You can check out more of what I do on [Ember's personal Github page.](https://github.com/deertears)
+You can check who else has helped contribute to putting this website together here by checking [the Contributors list.](https://github.com/QodotPlugin/qodotplugin.github.io/graphs/contributors)
 
-I want to sincerely thank [Shifty](https://github.com/shfty/) for letting me take over the documentation and rebuild it from the ground up, as well as for making such a cool plugin that's enabled so many developers. We really couldn't have all been here to do this without him.
-
-An additional thanks to:
-- MissLavender
-- kiwwi
-- elvisish
-
-Thanks to everyone who's asked questions on the Qodot discord, I really enjoy responding and you all have played a part in building a better documentation!
+I want to sincerely thank [Shifty](https://github.com/shfty/)for making such a cool plugin that's enabled so many developers, as well as for letting me take over the documentation and rebuild it from the ground up.
