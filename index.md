@@ -41,12 +41,16 @@ Any text with **Note:** indicates "gotcha" scenarios for less-common situations,
 
 Any text with **Warning:** is here to prevent you from losing a lot of progress or time. This usually indicates pitfalls and quirks that limit the flexibility of Qodot Plugin.
 
-## Who made this?
+## Who wrote this?
 
-So hi, I'm [Ember](https://github.com/deertears/). I really like sharing knowledge with people, and I created this out of my desire to see something more comprehensive for teaching how the plugin works. I've spent countless hours doing research, answering user questions, and recording steps as I've put this together. This has been my largest open-source documentation project yet. I really appreciate everyone who's come to give input, feedback, and generally just use what I've written.
+So hi, I'm [Ember](https://github.com/deertears/). I wrote most of the words on these page, based on my own research and coupled with the work [Shifty](https://github.com/shfty) did for the old Qodot Plugin wiki. As a tutor, I really like sharing knowledge with people, and I created this out of my desire to see something more comprehensive for teaching how the plugin works.
+
+As time goes on Shifty and I will have less to claim as our own work, you can check the [the Contributors list](https://github.com/QodotPlugin/qodotplugin.github.io/graphs/contributors) to see who else was involved in writing these docs.
+
+## Special Thanks
 
 The Jekyll theme is [Just the Docs](https://github.com/pmarsceill/just-the-docs) made by [pmarsceill](https://github.com/pmarsceill/).
 
-You can check who else has helped contribute to putting this website together here by checking [the Contributors list.](https://github.com/QodotPlugin/qodotplugin.github.io/graphs/contributors)
+[Shifty](https://github.com/shfty/) for making such a cool plugin that's enabled so many developers to make stand-out games in the indie sphere.
 
-I want to sincerely thank [Shifty](https://github.com/shfty/)for making such a cool plugin that's enabled so many developers, as well as for letting me take over the documentation and rebuild it from the ground up.
+Also, Ember would like to thank everyone reading, and especially everyone who's come to give input and feedback on these docs as they've developed. 

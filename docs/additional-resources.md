@@ -11,7 +11,11 @@ nav_order: 11
 
 Here's a list of learning resources and assets for you to use in your Godot games.
 
-# Community Forums and Discords
+# Learning Resources
+
+There are an amazing handful of resources on how use Trenchbroom and Godot. Here are only a few of them:
+
+## Community Forums and Discords
 
 If you need help during any step of the process, you can reach out to these communities to get more info about the corresponding process.
 
@@ -19,9 +23,6 @@ If you need help during any step of the process, you can reach out to these comm
 - [Quake Mapping Discord (Provides J.A.C.K. and Trenchbroom support)](https://discordapp.com/invite/f5Y99aM)
 - [func_messageboard on celephais.net](https://celephais.net/board/)
 - [Trenchbroom Discord](https://discord.gg/WGf9uve)
-
-# Trenchbroom Resources
-There are an amazing handful of resources on how use Trenchbroom, here are only a few of them:
 
 ## Trenchbroom Manual
 
@@ -34,21 +35,36 @@ Most quirks, setup, and explanations of Trenchbroom’s features are in text thr
 
 [JohnathanLinat's Quake Level Design Starterkit](https://github.com/jonathanlinat/quake-leveldesign-starterkit/releases) exists as a way to help speed up the setup process of the above tutorial series.
 
-## Trenchbroom Geometry
+## Creating Textures
 
-[Quake Builder](https://www.youtube.com/channel/UCMkmAYBVLAC9jGIUD4LjacA) is a YouTube channel with a wide array of videos that cover advanced mapping topics in Trenchbroom.
+AmbientCG’s PBR creation process documented in-full: [https://pbr.one/](https://pbr.one/)
 
-- [Curves](https://youtu.be/NmEfbds-CFk)
-- [Angular Steps](https://www.youtube.com/watch?v=Wi9YjbLpjIA)
-- [Arches](https://www.youtube.com/watch?v=fTwe2lEu95s)
-- [Terrain/Displacements](https://www.youtube.com/watch?v=Nhx4VEZUr80)
-- [Clipping](https://youtu.be/pIFaiRCqres)
-- [Tunnels with Curves](https://www.youtube.com/watch?v=E27I6JCn9jw)
-- [Spiral Staircases](https://www.youtube.com/watch?v=k-5itcvV8uM)
+Quake Builder's YouTube video on [Creating Quake-like textures with Asesprite](https://youtu.be/S6Eu8Cti9nI).
 
-# Asset Downloads
+## Creating Character Controllers
 
-## Textures
+Where to learn to make your own character controller in Godot.
+
+| Name | Link |
+| ---- | ---- |
+| Shifty's Manifesto | [Markdown Pastebin Link](https://markdownpastebin.com/?id=d9d61e67f9d64db2bd215f165b931449) |
+| Nvidea Gameworks on Stair-Stepping | [Nvidea Gameworks Docs](https://docs.nvidia.com/gameworks/content/gameworkslibrary/physx/guide/Manual/CharacterControllers.html) |
+
+## Level Design
+
+Quake Builder's YouTube Videos on:
+- [Layout theory](https://www.youtube.com/watch?v=G4tWWiuaF7g)
+- [Designing multiple difficulties](https://youtu.be/s9bleQCTdTo).
+
+Chubzdoomer's YouTube video on [John Romero's Level Design Rules in DOOM](https://youtu.be/ptHurafdCoQ).
+
+Following a style: [Archived gamespy text interview with John Romero](http://web.archive.org/web/20111121052306/https://archive.gamespy.com/articles/december03/doom/romero/).
+
+# Free Assets
+
+All asset download sites here are free, or provide free downloads of some sort. Any site that require registration or offer additional resources behind a paywall are noted.
+
+## Free Textures
 
 | Name | License | Link |
 | ---- | ------- | ---- |
@@ -61,36 +77,9 @@ Most quirks, setup, and explanations of Trenchbroom’s features are in text thr
 | JulioVII’s Texture Packs | CC0, some paid | [https://juliovii.itch.io/](https://juliovii.itch.io/) | 
 | Sketchup Texture Club | CC0, requires email | [https://www.sketchuptextureclub.com/](https://www.sketchuptextureclub.com/) | 
 
-### Creating Textures
-
-AmbientCG’s PBR creation process documented in-full: [https://pbr.one/](https://pbr.one/)
-
-Quake Builder's YouTube video on [Creating Quake-like textures with Asesprite](https://youtu.be/S6Eu8Cti9nI).
-
-### Level Design
-
-Quake Builder's YouTube Videos on:
-- [Layout theory](https://www.youtube.com/watch?v=G4tWWiuaF7g)
-- [Designing multiple difficulties](https://youtu.be/s9bleQCTdTo).
-
-Chubzdoomer's YouTube video on [John Romero's Level Design Rules in DOOM](https://youtu.be/ptHurafdCoQ).
-
-Following a style: [Archived gamespy text interview with John Romero](http://web.archive.org/web/20111121052306/https://archive.gamespy.com/articles/december03/doom/romero/).
-
-## Godot Character Controllers
-
-### Downloads
+## Free Character Controllers
 
 | Version | Author | Node Type | Link |
 | ------- | ------ | --------- | ---- |
 | Godot 3 | fossegutten | KinematicBody | [fossegutten's Simple Q3 Controller on Github](https://github.com/fossegutten/Simple-Q3-Controller) |
 | Godot 3 | GarbajYT | KinematicBody | [GarbajYT's Godot Updated FPS Controller on Github](https://github.com/GarbajYT/godot_updated_fps_controller) |
-
-### Resources
-
-Where to learn to make your own character controller in Godot.
-
-| Name | Link |
-| ---- | ---- |
-| Shifty's Manifesto | [Markdown Pastebin Link](https://markdownpastebin.com/?id=d9d61e67f9d64db2bd215f165b931449) |
-| Nvidea Gameworks on Stair-Stepping | [Nvidea Gameworks Docs](https://docs.nvidia.com/gameworks/content/gameworkslibrary/physx/guide/Manual/CharacterControllers.html) |

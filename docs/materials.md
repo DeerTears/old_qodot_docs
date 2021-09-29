@@ -28,7 +28,7 @@ For loose textures, you should have your own texture files to apply to surfaces.
 
 **Warning:** In all Qodot versions including 1.7.1, Qodot won't read textures with spaces in the filename, including the folder it came from. Please check that your textures fit this naming scheme before continuing.
 
-## Comparison of Texturing Methods
+# Comparison of Texturing Methods
 
 Here is a table showing a quick overview of the benefits some methods have over others.
 
@@ -131,31 +131,12 @@ When applying an Auto PBR material in Trenchbroom, you do not have to include an
 
 **Tip:** Since you can separate albedo from editor textures, it may help to add a grid or other distinguishing features of the material as a part of its editor texture, to aid in aligning the texture to neighbouring brushes.
 
-# Default Material
+## Default Material
 For less control, but quicker setup, you can apply a default material to every single brush face in the map using the Default Material property in a QodotMap. This can be useful if you’re using Qodot to import models and you don’t want to setup textures or materials using any of the above methods.
 
 ![](../images/materials-default.png)
 
-## Clipping
-
-As an aside, clipping is a unique feature that allows QodotMap to build collisions without any mesh geometry.
-
-A QodotMap node lets you choose one texture in your project directory to act as your "clip" texture.
-
-In the Clip Texture property, add the subfolder and image name for your clip texture without the file extension.
-
-For example, if you have this for your Godot folder structure:
-
-```
-res://
-	/textures
-		/special
-			clip.png
-```
-
-You can set clip.png as the clip texture by adding `/special/clip` into the Clip Texture field of a QodotMap.
-
-## WAD File Support
+# WAD File Support
 
 Qodot adds palette.lmp and texture WAD import support to the Godot editor, allowing textures to be extracted and converted to RGB for in-engine use.
 

@@ -10,7 +10,7 @@ nav_order: 9
 # Graphics
 One of the main benefits to using Qodot is that you can apply level design theory from the quake-era of games while using Godot’s many graphical features to make the game stand out visually.
 
-This section does **not** cover how to [Apply Textures](/beginner's-guide-to-qodot/applying-textures.md) or how to [Apply PBR and Shader Materials](/materials.md) to surfaces.
+This section does **not** cover how to [Apply Textures](/docs/beginner's-guide-to-qodot/applying-textures.md) or how to [Apply PBR and Shader Materials](/materials.md) to surfaces.
 
 Instead, this section covers how to integrate your Qodot geometry with Godot's graphical systems.
 
@@ -133,6 +133,3 @@ Reflection probes are not volumetric, they work best in square rooms. You can fa
 
 Reflections are planned to improve greatly in Godot 4.0, where a much faster, approximate, and smoother-looking screenspace reflection method replaces the old screenspace reflections. You can read more about it in the official Godot Engine news post here:
 https://godotengine.org/article/vulkan-progress-report-7
-
-### 🚧 Screen Space Reflections
-Todo.
