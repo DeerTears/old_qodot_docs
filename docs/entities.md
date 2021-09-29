@@ -323,15 +323,15 @@ To learn more about working with props and entities, read the [Qodot Wiki page o
 
 Create a new Solid Entity resource by searching for "solid".
 
-![](../images/Pasted image 20210911192501.png)
+![](../images/solid-search.png)
 
 Although not necessary, it helps to organize entities by which category they fall into, since they otherwise share the file extension of .tres.
 
-![](../images/Pasted image 20210911192614.png)
+![](../images/solid-save.png)
 
 Here you get several options to customize a solid class.
 
-![](../images/Pasted image 20210911192631.png)
+![](../images/solid-properties.png)
 
 Our goal will be to give the brush entity a name and then to print that name.
 
@@ -339,7 +339,7 @@ Notice that unlike the point entity, we don't have a place to add a .tscn file l
 
 Now that we've created a new entity class, we can add it to our game's FGD.
 
-![](../images/Pasted image 20210911192948.png)
+![](../images/solid-fgd.png)
 
 Then update the configuration for Trenchbroom using the FGD resource by clicking Export File.
 
@@ -347,37 +347,40 @@ Now we can go back into Trenchbroom and try to create a brush entity.
 
 When loading up a map for your game config, first check that you're using your game's FGD and not Qodot's by clicking your game's name:
 
-![](../images/Pasted image 20210911193415.png)
-
-<!-- Problem! I cannot get a brush entity to transfer over? -->
+![](../images/solid-fgd-check.png)
 
 # 🚧 Models in Trenchbroom
 You can display a model in TrenchBroom that will be built as the equivalent model in Godot. In this case, the Trenchbroom model just represents a point entity.
+
 The model has to be an .obj, and you have to create an entity definition in your game’s FGD for that one model. You cannot swap models in and out of Trenchbroom like you can with Source or other 2000s-era BSP workflows.
 
-🚧 Step by step guide coming in future 🚧
-
-Taken from the Qodot wiki:
-
 You can add a **Meta Properties** in your point entity definition with model as the key and the relative path of your .obj file as the value.
-Example:
-`key: model value: "entities/models/my_model.obj"`
+
+Example: `key: model value: "entities/models/my_model.obj"`
 
 **Warning:** Add quotes surrounding your value, or TrenchBroom may crash when placing your entity class.
 
-Now that you’ve done this, you also need to update your game config every time your FGD changes. You can repeat the process for exporting a game config from earlier to overwrite the entire folder, or see **Updating a game config** in [Expert Zone](https://coda.io/d/Trenchbroom-Guide_d77T7fADkTg/Expert-Zone_suNzt) for more information on just updating the Trenchbroom game config.
+Now that you’ve done this, you also need to update your game config every time your FGD changes. You can repeat the process for exporting a game config from earlier to overwrite the entire folder.
 
-# Example Entities
+# Qodot's Demo Entities
 
-You are given some entity definitions through `Qodot.fgd`, such as
+Although you are given some entity definitions through `Qodot.fgd`, such as
 - Light
 - Breakable
 - Ball
+- Detail
+- Wall
 
-These example entities have limited functionality, but they exist as an example of what can be done.
+These example entities have limited functionality. They exist as an example of what can be done, but they do not reliably provide functionality as you might expect.
 
-Not all of them are included in the default Qodot.fgd, and most do not provide expected functionality. Consider creating your own entities instead.
+Consider creating your own entities instead.
 
-# Foreword
+However, there are some entities you have to include in an FGD for your map's worldspawn geometry to build:
 
-If there's any information you expected to see here, but didn't (or something here had you lost) please [flag an issue on the github repository.](https://github.com/DeerTears/DeerTears.github.io/issues) This is the most complicated page of all and it needs the most attention.
+- worldspawn_solid
+- worldspawn_base
+- group_solid
+
+# Report issues with this page
+
+If you aren't seeing information you need on this page, please [flag an issue on the github repository.](https://github.com/DeerTears/DeerTears.github.io/issues) This is the most complicated page of all and it needs the most attention.

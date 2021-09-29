@@ -1,13 +1,15 @@
 ---
 layout: default
 title: Additional Resources
-nav_order: 10
+nav_order: 11
 ---
 
 1. TOC
 {:toc}
 
 # Additional Resources
+
+Here's a list of learning resources and assets for you to use in your Godot games.
 
 # Community Forums and Discords
 
@@ -50,14 +52,14 @@ Most quirks, setup, and explanations of Trenchbroom’s features are in text thr
 
 | Name | License | Link |
 | ---- | ------- | ---- |
-| Kenney | CC0 | https://kenney.nl/assets?q=2d |
-| Prototype WAD | CC0 | http://khreathor.xyz/site/prototype/ |
-| AmbientCG | Public Domain | https://ambientcg.com/ |
-| FreePBR | CC0 | https://freepbr.com/ | 
-| OpenGameArt | Varies | https://opengameart.org/textures/all | 
-| Polyhaven | CC0 | https://polyhaven.com/textures | 
-| JulioVII’s Texture Packs | CC0, some paid | https://juliovii.itch.io/ | 
-| Sketchup Texture Club | CC0, requires email | https://www.sketchuptextureclub.com/ | 
+| Kenney | CC0 | [https://kenney.nl/assets?q=2d](https://kenney.nl/assets?q=2d) |
+| Prototype WAD | CC0 | [http://khreathor.xyz/site/prototype/](http://khreathor.xyz/site/prototype/) |
+| AmbientCG | Public Domain | [https://ambientcg.com/](https://ambientcg.com/) |
+| FreePBR | CC0 | [https://freepbr.com/](https://freepbr.com/) | 
+| OpenGameArt | Varies | [https://opengameart.org/textures/all](https://opengameart.org/textures/all) | 
+| Polyhaven | CC0 | [https://polyhaven.com/textures](https://polyhaven.com/textures) | 
+| JulioVII’s Texture Packs | CC0, some paid | [https://juliovii.itch.io/](https://juliovii.itch.io/) | 
+| Sketchup Texture Club | CC0, requires email | [https://www.sketchuptextureclub.com/](https://www.sketchuptextureclub.com/) | 
 
 ### Creating Textures
 
@@ -83,7 +85,6 @@ Following a style: [Archived gamespy text interview with John Romero](http://web
 | ------- | ------ | --------- | ---- |
 | Godot 3 | fossegutten | KinematicBody | [fossegutten's Simple Q3 Controller on Github](https://github.com/fossegutten/Simple-Q3-Controller) |
 | Godot 3 | GarbajYT | KinematicBody | [GarbajYT's Godot Updated FPS Controller on Github](https://github.com/GarbajYT/godot_updated_fps_controller) |
-| Godot 3 | Miziziziz | KinematicBody | [Miziziz's Retro FPS Course on Udemy](https://www.udemy.com/course/how-to-make-a-retro-style-3d-fps-in-the-godot-game-engine/) |
 
 ### Resources
 
