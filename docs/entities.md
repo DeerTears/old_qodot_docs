@@ -236,7 +236,7 @@ Alternatively, you can open Qodot.fgd's _Base Fgd Files_ array and add your FGD 
 
 Build the map, your point entity should show up!
 
-![](../image/fgd-success.png)
+![](../images/fgd-success.png)
 
 Once you've added your FGD to a QodotMap once, that QodotMap will update its entity definitions with your FGD resource.
 
