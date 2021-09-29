@@ -10,7 +10,7 @@ nav_order: 9
 # Graphics
 One of the main benefits to using Qodot is that you can apply level design theory from the quake-era of games while using Godot’s many graphical features to make the game stand out visually.
 
-This section does **not** cover how to [Apply Textures](/docs/beginner's-guide-to-qodot/applying-textures.md) or how to [Apply PBR and Shader Materials](/materials.md) to surfaces.
+This section does **not** cover how to [Apply Textures](/docs/beginner's-guide-to-qodot/applying-textures.html) or how to [Apply PBR and Shader Materials](/materials.md) to surfaces.
 
 Instead, this section covers how to integrate your Qodot geometry with Godot's graphical systems.
 
