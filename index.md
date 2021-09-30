@@ -6,25 +6,17 @@ nav_order: 1
 
 This used to be the home of [Qodot's](https://github.com/qodotplugin) [Documentation](https://qodotplugin.github.io/) but it is now Ember's testing grounds for new features to include in the docs.
 
-Blue label with space {: .label .label-blue }
-
-Blue label no space{: .label .label-blue }Text after blue label no space.
-
-Blue label with newline
-{: .label .label-blue } Text after blue label with space.
-
-Note
+1.6.4
 {: .label .label-blue }
+You have to pick one extension for image files.
 
-This is the note down 2 lines.
-
-Note
+1.7.1
 {: .label .label-blue }
-This is the note down 1 line.
+You have extension arrays! Add another element to the array and type in the file extension you want included.
 
 Warning
 {: .label .label-red }
-Test
+Do not add files to `/addons`, or else your work will be erased when updating the plugin.
 
 ---
 
