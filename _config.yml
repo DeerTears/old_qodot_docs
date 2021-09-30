@@ -3,6 +3,10 @@ remote_theme: pmarsceill/just-the-docs
 aux_links:
   "Download Qodot":
     - "//github.com/shfty/qodot-plugin"
+  "Dustkid":
+    - "//dustkid.com"
+  "Me":
+    - "//github.com/deertears"
 
 # Makes Aux links open in a new tab. Default is false
 aux_links_new_tab: true
